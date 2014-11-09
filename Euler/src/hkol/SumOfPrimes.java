@@ -35,8 +35,17 @@ public class SumOfPrimes {
 	}
 	
 	public String getFormattedResult() {
-		// TODO method for formatted printing of solution
-		return "foo";
+		String resultString = "";
+		for (int i=0; i<primeList.size(); i++) {
+			resultString += primeList.get(i);
+			if (i<primeList.size()-1) {
+				resultString += " + ";
+			} else {
+				resultString += " = ";
+			}
+		} 
+		resultString += result;
+		return resultString;
 	}
 	
 	//checks whether a long is prime or not.

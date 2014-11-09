@@ -14,6 +14,8 @@ import org.junit.Test;
 public class SumOfPrimesTest {
 	private Long result;
 	private Long expected;
+	private String resultString;
+	private String expectedString;
 
 	@Before
 	public void setUp() throws Exception {
@@ -34,6 +36,15 @@ public class SumOfPrimesTest {
 		result = sum.getResult();
 		assertEquals(expected, result);
 	}
+
+	@Test
+	public void testPrintSumOfPrime10() {
+		SumOfPrimes sum = new SumOfPrimes((long)10);
+		expectedString = "2 + 3 + 5 + 7 = 17";
+		resultString = sum.getFormattedResult();
+		assertEquals(expectedString, resultString);
+	}
+
 	
 	@Test
 	public void testSumOfPrime2M() {

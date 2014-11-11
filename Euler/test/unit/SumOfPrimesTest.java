@@ -21,14 +21,14 @@ public class SumOfPrimesTest {
 	public void setUp() throws Exception {
 		result = new Long(0);
 		expected = new Long(0);
-		System.out.println("Start SumOfPrimesTest");
+		System.out.println("Start of SumOfPrimesTest");
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		result = null;
 		expected = null;
-		System.out.println("End SumOfPrimesTest");
+		System.out.println("End of SumOfPrimesTest");
 	}
 
 	@Test

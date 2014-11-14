@@ -17,14 +17,13 @@ public class P1_SumOfMultiples {
 
 	
 	/**
-	 * Method to determine sum of multiples
-	 * @param multiple1
+	 * Method to determine sum of multiples below (not including) limit
 	 * @param multiple2
 	 * @param limit
 	 * @return
 	 */
 	public Integer sum(Integer multiple1, Integer multiple2, Integer limit) {
-		for (int i=1; i<=limit; i++) {
+		for (int i=1; i<limit; i++) {
 			if (isMultiple(i,multiple1) || isMultiple(i,multiple2)){
 				sum += i;
 			}

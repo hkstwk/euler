@@ -60,4 +60,17 @@ public class P1_SumOfMultiplesTest {
 		assertFalse(multiple);
 	}
 
+	/**
+	 * test sum of all mutliples of 3 and 5 below 10.
+	 * Mutliples of 3 below 10 are: 3, 6 and 9
+	 * Multiples of 5 below 10 are: 5
+	 * Sum should be 3 + 5 + 6 + 9 = 23
+	 */
+	@Test
+	public void testSum1000() {
+		result = som.sum(3,5,1000);
+		Integer expected = 233168;
+		assertEquals(expected, result);
+	}
+	
 }

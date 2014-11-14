@@ -15,9 +15,21 @@ public class P1_SumOfMultiples {
 		}
 	}
 
+	
+	/**
+	 * Method to determine sum of multiples
+	 * @param multiple1
+	 * @param multiple2
+	 * @param limit
+	 * @return
+	 */
 	public Integer sum(Integer multiple1, Integer multiple2, Integer limit) {
-		// TODO Auto-generated method stub
-		return null;
+		for (int i=1; i<=limit; i++) {
+			if (isMultiple(i,multiple1) || isMultiple(i,multiple2)){
+				sum += i;
+			}
+		}
+		return sum;
 	}
 
 }

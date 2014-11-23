@@ -54,7 +54,8 @@ public class P2_SumOfEvenFibonacciTest {
 	 */
 	@Test
 	public void testFillFibonacciList() {
-		soef.fillFibonacciList(34);
+		soef.setLimit(34);
+		soef.fillFibonacciList();
 		ArrayList<Integer> fibList = new ArrayList<Integer>();
 		fibList = soef.getFibonacciList();
 		Integer result = fibList.get(fibList.size()-1);
@@ -68,7 +69,8 @@ public class P2_SumOfEvenFibonacciTest {
 	 */
 	@Test
 	public void testSumEvenFibonacciList() {
-		soef.fillFibonacciList(35);
+		soef.setLimit(35);
+		soef.fillFibonacciList();
 		soef.sumEvenFibonacciNumbers();
 		Integer result = soef.getSumEvenFibonacci();
 		Integer expected = 44;
@@ -81,14 +83,26 @@ public class P2_SumOfEvenFibonacciTest {
 	 */
 	@Test
 	public void testSumEvenFibonacciList4M() {
-		soef.fillFibonacciList(4000000);
+		soef.setLimit(4000000);
+		soef.fillFibonacciList();
 		soef.sumEvenFibonacciNumbers();
 		Integer result = soef.getSumEvenFibonacci();
 		Integer expected = 4613732;
 		assertEquals(expected,result);
 	}
 	
-	
-	
+	/**
+	 * Fill ArrayList with first ten fibonacci numbers
+	 * Last index should contain 34
+	 */
+	@Test
+	public void testRecursiveSumEvenFibonacciList4M() {
+		soef.setLimit(4000000);
+		soef.fillFibonacciList();
+		soef.sumEvenFibonacciNumbers();
+		Integer result = soef.getSumEvenFibonacci();
+		Integer expected = 4613732;
+		assertEquals(expected,result);
+	}
 		
 }

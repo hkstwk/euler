@@ -1,9 +1,10 @@
-package unit;
+package nl.hkolvoort.euler.junit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import hkol.P1_SumOfMultiples;
+
+import nl.hkolvoort.euler.P1_SumOfMultiples;
 
 import org.junit.After;
 import org.junit.Before;

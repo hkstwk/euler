@@ -1,4 +1,4 @@
-package hkol;
+package nl.hkolvoort.euler;
 
 /**
  * @author Harm Kolvoort

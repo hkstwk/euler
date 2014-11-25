@@ -1,11 +1,12 @@
-package unit;
+package nl.hkolvoort.euler.junit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import hkol.P2_SumOfEvenFibonacci;
 
 import java.util.ArrayList;
+
+import nl.hkolvoort.euler.P2_SumOfEvenFibonacci;
 
 import org.junit.After;
 import org.junit.Before;

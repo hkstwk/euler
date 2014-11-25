@@ -1,11 +1,13 @@
-package unit;
+package nl.hkolvoort.euler.junit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 
-import hkol.P10_SumOfPrimes;
+
+import nl.hkolvoort.euler.P10_SumOfPrimes;
+import nl.hkolvoort.euler.PrimeHelper;
 
 import org.junit.After;
 import org.junit.Before;
@@ -67,43 +69,38 @@ public class P10_SumOfPrimesTest {
 	
 	@Test
 	public void testPrime2() {
-		P10_SumOfPrimes n = new P10_SumOfPrimes((long)2);
-		boolean isPrime = n.isPrime((long)2);
+		boolean isPrime = PrimeHelper.isPrime((long)2);
 		assertTrue(isPrime);
 	}
 
 	@Test
 	public void testPrime3() {
-		P10_SumOfPrimes n = new P10_SumOfPrimes((long) 3);
-		boolean isPrime = n.isPrime((long) 3);
+		boolean isPrime = PrimeHelper.isPrime((long) 3);
 		assertTrue(isPrime);
 	}
 
 	@Test
 	public void testPrime4() {
-		P10_SumOfPrimes n = new P10_SumOfPrimes((long) 4);
-		boolean isPrime = n.isPrime((long) 4);
+		boolean isPrime = PrimeHelper.isPrime((long) 4);
 		assertFalse(isPrime);
 	}
 
 	@Test
 	public void testPrime23() {
-		P10_SumOfPrimes n = new P10_SumOfPrimes((long) 23);
-		boolean isPrime = n.isPrime((long) 23);
+		boolean isPrime = PrimeHelper.isPrime((long) 23);
 		assertTrue(isPrime);
 	}
 
 	@Test
 	public void testPrime6() {
-		P10_SumOfPrimes n = new P10_SumOfPrimes((long) 6);
-		boolean isPrime = n.isPrime((long) 6);
+		boolean isPrime = PrimeHelper.isPrime((long) 6);
 		assertFalse(isPrime);
 	}
 	
 	@Test
 	public void testHowManyPrimes6() {
 		P10_SumOfPrimes n = new P10_SumOfPrimes((long) 6);
-		result = n.getNumberOfPrimes();
+		result = PrimeHelper.getNumberOfPrimes(n.getPrimeList());
 		expected = (long) 3;
 		assertEquals(expected, result);
 	}
@@ -111,7 +108,7 @@ public class P10_SumOfPrimesTest {
 	@Test
 	public void testHowManyPrimes10() {
 		P10_SumOfPrimes n = new P10_SumOfPrimes((long) 10);
-		result = n.getNumberOfPrimes();
+		result = PrimeHelper.getNumberOfPrimes(n.getPrimeList());
 		expected = (long) 4;
 		assertEquals(expected, result);
 	}

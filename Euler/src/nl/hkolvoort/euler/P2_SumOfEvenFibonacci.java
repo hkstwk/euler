@@ -1,4 +1,4 @@
-package hkol;
+package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
 

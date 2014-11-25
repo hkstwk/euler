@@ -19,13 +19,13 @@ public class P2_SumOfEvenFibonacciTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		result = 0;
+		this.result = 0;
 		soef = new P2_SumOfEvenFibonacci();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		result = 0;
+		this.result = 0;
 		soef = null;
 	}
 

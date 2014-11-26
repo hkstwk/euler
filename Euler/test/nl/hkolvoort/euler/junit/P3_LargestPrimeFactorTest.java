@@ -40,9 +40,8 @@ public class P3_LargestPrimeFactorTest {
 	
 	@Test
 	public void testLargestPrime() {
-//		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((Long.valueOf("600851475143")));
-		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((Long.valueOf("123452542")));
-		expected = (long) 29;
+		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((Long.valueOf("600851475143")));
+		expected = (long) 6857;
 		result = lpf.calcLargestPrimeFactor();
 		assertEquals(expected, result);
 	}

@@ -45,4 +45,12 @@ public class P3_LargestPrimeFactorTest {
 		result = lpf.calcLargestPrimeFactor();
 		assertEquals(expected, result);
 	}
+	
+	@Test
+	public void testLargestPrimeFast() {
+		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((Long.valueOf("600851475143")));
+		expected = (long) 6857;
+		result = lpf.primeFactorization();
+		assertEquals(expected, result);
+	}
 }

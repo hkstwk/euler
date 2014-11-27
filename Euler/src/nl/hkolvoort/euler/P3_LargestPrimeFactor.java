@@ -1,5 +1,8 @@
 package nl.hkolvoort.euler;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +15,7 @@ import java.util.ArrayList;
  *       Brute force approach is way too slow. Does work with small numbers but
  *       with this 12 digit number simply runs forever. Lost patience and
  *       aborted the run. Approach used here is bruto force with small but
- *       clever adjustment which I found at
+ *       clever adjustment which I found at:
  *       http://www.mathblog.dk/project-euler-problem-3/
  * 
  *       Any factor less than the square root of the number we check, will have
@@ -23,6 +26,8 @@ import java.util.ArrayList;
  *       are save to check all numbers up to and including 4. This gives us 2,3
  *       and 4 as factors. The rest can be deducted as: 24/2 = 12; 24/3 = 8;
  *       24/4 = 6
+ * 
+ *       Even More info: http://www.mathsisfun.com/prime-factorization.html
  * 
  */
 public class P3_LargestPrimeFactor {
@@ -43,9 +48,43 @@ public class P3_LargestPrimeFactor {
 		}
 		return (long) lpf;
 	}
+	
+	public Long primeFactorization(){
+		Long newnumm = this.input;
+		Long largestFact = (long) 0;
+		int counter = 2;
+		while (counter * counter <= newnumm) {
+		    if (newnumm % counter == 0) {
+		        newnumm = newnumm / counter;
+		        largestFact = (long) counter;
+		    } else {
+		        counter++;
+		    }
+		}
+		if (newnumm > largestFact) { // the remainder is a prime number
+		    largestFact = newnumm;
+		}
+		return largestFact;
+	}
 
 	public ArrayList<Long> getPrimeList() {
 		return this.primeList;
+	}
+
+	public static void main(String[] args) {
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("Please enter number : ");
+		String number = null;
+		try {
+			number = reader.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("You entered : " + number);
+		
+		P3_LargestPrimeFactor p3 = new P3_LargestPrimeFactor(new Long(number));
+		System.out.println("Largest Prima Factor of " + number + " = " + p3.primeFactorization());
 	}
 
 }

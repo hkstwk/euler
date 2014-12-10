@@ -111,18 +111,18 @@ public class EulerMain extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent event){
 				if (cardList.isEmpty()){
-					JPanel cardTwo = new JPanel();
-					cardTwo.setBackground(Color.GREEN);
+					Euler2 euler2Panel = new Euler2();
+					euler2Panel.setBackground(Color.GREEN);
 					setTitle("projecteuler.net - problem 2, sum of even fibonacci numbers");
-					cardList.add(cardTwo);
-					contentPane.add(cardTwo,"2");
+					cardList.add(euler2Panel);
+					contentPane.add(euler2Panel,"2");
 					cl.show(contentPane, "2");	
 					lblStatusMessage.setText("Ready - no panels yet; created panel for problem 2");
 				}
 				else {
 					boolean cardExists = false;
 					for (int i=0; i < cardList.size(); i++) {
-						if (cardList.get(i).getClass() == JPanel.class) {
+						if (cardList.get(i).getClass() == Euler2.class) {
 							cardExists = true;
 						}
 					}
@@ -132,11 +132,11 @@ public class EulerMain extends JFrame {
 						lblStatusMessage.setText("Ready - switched to already opened panel for problem 2");
 					}
 					else {
-						JPanel cardTwo = new JPanel();
-						cardTwo.setBackground(Color.GREEN);
+						Euler2 euler2Panel = new Euler2();
+						euler2Panel.setBackground(Color.GREEN);
 						setTitle("projecteuler.net - problem 2, sum of even fibonacci numbers");
-						cardList.add(cardTwo);
-						contentPane.add(cardTwo,"2");
+						cardList.add(euler2Panel);
+						contentPane.add(euler2Panel,"2");
 						cl.show(contentPane, "2");	
 						lblStatusMessage.setText("Ready - there were already open panel, but not for problem 2, so created that one");
 					}

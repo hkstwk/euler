@@ -1,5 +1,19 @@
 package nl.hkolvoort.euler;
 
+/**
+ * @author Harm Kolvoort
+ * @date 11-5-2015
+ * 
+ * Problem 18: Maximum path sum I (triangle with 15 rows) 
+ * Problem 67: Maximum path sum II (triangle with 100 rows; brute force won't work here
+ * 
+ * By starting at the top of the triangle and moving to adjacent numbers on the row below, 
+ * find the maximum total from top to bottom.
+ * 
+ * Number of routes is 2^n-1, where n is numbers of rows in the triangle.
+ *
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,68 +21,29 @@ import java.util.Scanner;
 
 public class P18_MaxSumPath {
 
-	private ArrayList<ArrayList<Integer>> intTriangle;
-	public ArrayList<ArrayList<Integer>> getIntTriangle() {
-		return intTriangle;
+	private ArrayList<ArrayList<Integer>> intTriangleBig;
+	
+	/**
+	 * Constructor: create triangle ArrayList
+	 */
+	public P18_MaxSumPath() throws FileNotFoundException {
+		this.intTriangleBig = new ArrayList<ArrayList<Integer>>();
 	}
-
-	public void setIntTriangle(ArrayList<ArrayList<Integer>> intTriangle) {
-		this.intTriangle = intTriangle;
-	}
-
+		
 	public ArrayList<ArrayList<Integer>> getIntTriangleBig() {
 		return intTriangleBig;
 	}
 
-	public void setIntTriangleBig(ArrayList<ArrayList<Integer>> intTriangleBig) {
-		this.intTriangleBig = intTriangleBig;
-	}
-
-	private ArrayList<ArrayList<Integer>> intTriangleBig;
-		
-	/**
-	 * Constructor sets sum to zero.
-	 * Initialize small tester triangle 
-	 * @throws FileNotFoundException 
-	 */
-	public P18_MaxSumPath() throws FileNotFoundException {
-		ArrayList<Integer> helperList1 = new ArrayList<Integer>();
-		ArrayList<Integer> helperList2 = new ArrayList<Integer>();
-		ArrayList<Integer> helperList3 = new ArrayList<Integer>();
-		ArrayList<Integer> helperList4 = new ArrayList<Integer>();
-		
-		this.intTriangle = new ArrayList<ArrayList<Integer>>();
-		
-		helperList1.add(3);
-		intTriangle.add(helperList1);
-				
-		helperList2.add(7);
-		helperList2.add(4);
-		intTriangle.add(helperList2);
-		
-		helperList3.add(2);
-		helperList3.add(4);
-		helperList3.add(6);
-		intTriangle.add(helperList3);
-		
-		helperList4.add(8);
-		helperList4.add(5);
-		helperList4.add(9);
-		helperList4.add(3);
-		intTriangle.add(helperList4);
-		
-		loadTriangleFile();
-	}
-	
-	public void loadTriangleFile() throws FileNotFoundException{
-	    // read p18.txt
+	public void loadTriangleFile(String fileName) throws FileNotFoundException{
 	    // create Scanners 
-	    Scanner fileScanner = new Scanner(new File("C:\\Users\\Harm\\Documents\\p18.txt"));
+	    Scanner fileScanner = new Scanner(new File(fileName));
 	    Scanner lineScanner;
 	    
-	    // Initialize ArrayList to store triangle in
-	    this.intTriangleBig = new ArrayList<ArrayList<Integer>>();
-	    Integer index = 0; // used to add Integers to correct index of ArrayList 
+	    // clear triangle ArrayList if not empty
+	    if (!this.intTriangleBig.isEmpty()){
+	    	this.intTriangleBig.clear();
+	    }
+	    Integer index = 0; // used to add Integers to correct index of ArrayList (= row of triangle) 
 	    
 	    // while loop for file scanner. Continue till last line.
 	    while (fileScanner.hasNextLine()){
@@ -97,7 +72,6 @@ public class P18_MaxSumPath {
 		for (int i=intTriangle.size()-2;i>=0;i--){
 			for (int j=0; j<intTriangle.get(i).size();j++){
 				intTriangle.get(i).set(j, intTriangle.get(i).get(j) + Math.max(intTriangle.get(i+1).get(j), intTriangle.get(i+1).get(j+1)));
-				System.out.println(i + " " + j + ": " + intTriangle.get(i).get(j));
 			}
 		}
 		return intTriangle.get(0).get(0);
@@ -105,10 +79,10 @@ public class P18_MaxSumPath {
 	
     public static void main(String[] args) throws FileNotFoundException {
         P18_MaxSumPath p18 = new P18_MaxSumPath();
-        p18.printTriangle(p18.intTriangle);
-        System.out.println(Integer.toString(p18.findMaxSum(p18.intTriangle)));
+        p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p067_triangle.txt");
+        //p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p18.txt");
         p18.printTriangle(p18.intTriangleBig);
-        System.out.println(Integer.toString(p18.findMaxSum(p18.intTriangleBig)));
+        System.out.println("The maximum total of all routes through triangle is: " + p18.findMaxSum(p18.intTriangleBig));
         
     }
 }

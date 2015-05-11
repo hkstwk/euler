@@ -34,8 +34,9 @@ public class P18_MaxSumPathTest {
 		P18_MaxSumPath msp;
 		try {
 			msp = new P18_MaxSumPath();
-			expected = 23;
-			result = msp.findMaxSum(msp.getIntTriangle());
+			msp.loadTriangleFile("C:\\Users\\Harm\\Documents\\p18.txt");
+			expected = 1074;
+			result = msp.findMaxSum(msp.getIntTriangleBig());
 			assertEquals(expected, result);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

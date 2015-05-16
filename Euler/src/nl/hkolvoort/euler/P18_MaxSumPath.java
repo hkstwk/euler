@@ -79,8 +79,8 @@ public class P18_MaxSumPath {
 	
     public static void main(String[] args) throws FileNotFoundException {
         P18_MaxSumPath p18 = new P18_MaxSumPath();
-        p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p067_triangle.txt");
-        //p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p18.txt");
+        //p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p067_triangle.txt");
+        p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p18.txt");
         p18.printTriangle(p18.intTriangleBig);
         System.out.println("The maximum total of all routes through triangle is: " + p18.findMaxSum(p18.intTriangleBig));
         

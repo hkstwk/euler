@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * 
  * Problem 4: Largest palindrome product
  * A palindromic number reads the same both ways. 
- * The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+ * The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 ï¿½ 99.
  * Find the largest palindrome made from the product of two 3-digit numbers.
  * 
  * 
@@ -28,7 +28,7 @@ public class P4_LargestPalindromeProduct {
 	public Integer getReverseNumber(int input){
 		StringBuffer reverseString = new StringBuffer(String.valueOf(input));
 		reverseString.reverse();
-		System.out.println(Integer.parseInt(reverseString.toString()));
+		//System.out.println(Integer.parseInt(reverseString.toString()));
 		return Integer.parseInt(reverseString.toString().trim());
 	}
 	
@@ -41,16 +41,30 @@ public class P4_LargestPalindromeProduct {
 		}	
 	}
 	
+	public void findPalindromes(){
+		for (int i=100; i<1000; i++){
+			for (int j=100; j<=i;j++){
+				if (isPalindrome(i*j)){
+					this.palindromes.add(i*j);
+				}
+			}
+		}
+		System.out.println(this.palindromes);
+	}
+	
+	public Integer getLargestPalindrome() {
+		if (this.palindromes.isEmpty()){
+			return -1;
+		}
+		return 0;
+	}
+	
 	public static void main(String[] args){
         P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
         System.out.println(p4.getReverseNumber(9091));
         System.out.println(p4.isPalindrome(9008));
         System.out.println(p4.isPalindrome(9009));
         System.out.println(p4.isPalindrome(1111));
+        p4.findPalindromes();
     }
-
-	public Integer getLargestPalindrome() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

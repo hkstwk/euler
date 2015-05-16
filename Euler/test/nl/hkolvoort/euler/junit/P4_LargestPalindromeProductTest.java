@@ -50,4 +50,12 @@ public class P4_LargestPalindromeProductTest {
 		P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
 		assertFalse(p4.isPalindrome(input));
 	}
-}
+	
+	@Test
+	public void testLargestPalindromeTwoDigits(){
+		P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
+		p4.findPalindromes(10,100,p4.DEBUG);
+		expected = 9009;
+		result = p4.getLargestPalindrome();
+		assertEquals(expected, result);
+	}}

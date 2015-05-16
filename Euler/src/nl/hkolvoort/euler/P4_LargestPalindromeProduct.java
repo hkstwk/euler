@@ -1,6 +1,7 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Harm Kolvoort
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * 
  * Problem 4: Largest palindrome product
  * A palindromic number reads the same both ways. 
- * The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 � 99.
+ * The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 * 99.
  * Find the largest palindrome made from the product of two 3-digit numbers.
  * 
  * 
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 public class P4_LargestPalindromeProduct {
 
 	private ArrayList<Integer> palindromes;
+	public static final boolean DEBUG = true;
+	public static final boolean NODEBUG = false;
 		
 	/**
 	 * Constructor: create empty ArrayList palindromes
@@ -41,14 +44,21 @@ public class P4_LargestPalindromeProduct {
 		}	
 	}
 	
-	public void findPalindromes(){
-		for (int i=100; i<1000; i++){
-			for (int j=100; j<=i;j++){
+	public void findPalindromes(int startValue, int endValue, boolean debug){
+		for (int i=startValue; i<endValue; i++){
+			for (int j=startValue; j<=i;j++){
+				if (debug){
+					System.out.print(i*j + " ");
+				}
 				if (isPalindrome(i*j)){
 					this.palindromes.add(i*j);
 				}
 			}
+			if (debug){
+				System.out.println();
+			}
 		}
+		Collections.sort(this.palindromes);
 		System.out.println(this.palindromes);
 	}
 	
@@ -56,15 +66,13 @@ public class P4_LargestPalindromeProduct {
 		if (this.palindromes.isEmpty()){
 			return -1;
 		}
-		return 0;
+		return Collections.max(this.palindromes);
 	}
 	
 	public static void main(String[] args){
         P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
-        System.out.println(p4.getReverseNumber(9091));
-        System.out.println(p4.isPalindrome(9008));
-        System.out.println(p4.isPalindrome(9009));
-        System.out.println(p4.isPalindrome(1111));
-        p4.findPalindromes();
+        System.out.println("Maximum Palindrome is: " + p4.getLargestPalindrome());
+        p4.findPalindromes(100,1000,NODEBUG);
+        System.out.println("Maximum Palindrome is: " + p4.getLargestPalindrome());
     }
 }

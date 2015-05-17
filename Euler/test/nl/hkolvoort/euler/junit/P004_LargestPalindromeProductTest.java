@@ -3,13 +3,13 @@ package nl.hkolvoort.euler.junit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import nl.hkolvoort.euler.P4_LargestPalindromeProduct;
+import nl.hkolvoort.euler.P004_LargestPalindromeProduct;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class P4_LargestPalindromeProductTest {
+public class P004_LargestPalindromeProductTest {
 	private Integer expected;
 	private Integer result;
 	
@@ -32,7 +32,7 @@ public class P4_LargestPalindromeProductTest {
 	public void testRevertString() {
 		Integer input = 9091;
 		this.expected = 1909;
-		P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
+		P004_LargestPalindromeProduct p4 = new P004_LargestPalindromeProduct();
 		this.result = p4.getReverseNumber(input);
 		assertEquals(expected, result);
 	}
@@ -40,20 +40,20 @@ public class P4_LargestPalindromeProductTest {
 	@Test
 	public void testIsPalindrome(){
 		Integer input = 9009;
-		P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
+		P004_LargestPalindromeProduct p4 = new P004_LargestPalindromeProduct();
 		assertTrue(p4.isPalindrome(input));
 	}
 
 	@Test
 	public void testIsNoPalindrome(){
 		Integer input = 1234;
-		P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
+		P004_LargestPalindromeProduct p4 = new P004_LargestPalindromeProduct();
 		assertFalse(p4.isPalindrome(input));
 	}
 	
 	@Test
 	public void testLargestPalindromeTwoDigits(){
-		P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
+		P004_LargestPalindromeProduct p4 = new P004_LargestPalindromeProduct();
 		p4.findPalindromes(10,100,p4.DEBUG);
 		expected = 9009;
 		result = p4.getLargestPalindrome();

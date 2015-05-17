@@ -18,7 +18,7 @@ package nl.hkolvoort.euler;
  * 
  */
 
-public class P6_SumSquareDiff {
+public class P006_SumSquareDiff {
 
 	private Integer sumOfSquares;
 	private Integer squareOfSum;
@@ -27,13 +27,13 @@ public class P6_SumSquareDiff {
 	/**
 	 * Constructor: create triangle ArrayList
 	 */
-	public P6_SumSquareDiff(Integer count){
+	public P006_SumSquareDiff(Integer count){
 		this.count = count;
 		this.sumOfSquares = new Integer(0);
 		this.squareOfSum = new Integer(0);
 	}
 
-	public P6_SumSquareDiff(){
+	public P006_SumSquareDiff(){
 		this.count = 10;
 		this.sumOfSquares = new Integer(0);
 		this.squareOfSum = new Integer(0);
@@ -51,7 +51,7 @@ public class P6_SumSquareDiff {
 	}
 	
     public static void main(String[] args){
-        P6_SumSquareDiff p6 = new P6_SumSquareDiff(100);
+        P006_SumSquareDiff p6 = new P006_SumSquareDiff(100);
         System.out.println("The difference is: " + p6.getDifference()); 
     }
 }

@@ -1,13 +1,13 @@
 package nl.hkolvoort.euler.junit;
 
 import static org.junit.Assert.assertEquals;
-import nl.hkolvoort.euler.P6_SumSquareDiff;
+import nl.hkolvoort.euler.P006_SumSquareDiff;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class P6_SumSquareDiffTest {
+public class P006_SumSquareDiffTest {
 	private Integer result;
 	private Integer expected;
 
@@ -28,8 +28,8 @@ public class P6_SumSquareDiffTest {
 
 	@Test
 	public void testFirstTenNaturals() {
-		P6_SumSquareDiff sqd;
-		sqd = new P6_SumSquareDiff();
+		P006_SumSquareDiff sqd;
+		sqd = new P006_SumSquareDiff();
 		expected = 2640;
 		result = sqd.getDifference();
 		assertEquals(expected, result);

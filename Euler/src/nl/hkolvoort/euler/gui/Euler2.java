@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import nl.hkolvoort.euler.P1_SumOfMultiples;
-import nl.hkolvoort.euler.P2_SumOfEvenFibonacci;
+import nl.hkolvoort.euler.P001_SumOfMultiples;
+import nl.hkolvoort.euler.P002_SumOfEvenFibonacci;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -132,7 +132,7 @@ public class Euler2 extends JPanel {
 				Timestamp start = new Timestamp(new Date().getTime());
 				textStart.setText(start.toString());
 
-				P2_SumOfEvenFibonacci soef = new P2_SumOfEvenFibonacci();
+				P002_SumOfEvenFibonacci soef = new P002_SumOfEvenFibonacci();
 				soef.setLimit(limit);
 				soef.fillFibonacciList();
 				soef.sumEvenFibonacciNumbers();

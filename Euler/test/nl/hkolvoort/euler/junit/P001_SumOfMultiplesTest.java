@@ -4,21 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import nl.hkolvoort.euler.P1_SumOfMultiples;
+import nl.hkolvoort.euler.P001_SumOfMultiples;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class P1_SumOfMultiplesTest {
+public class P001_SumOfMultiplesTest {
 	private Integer result;
 	private boolean multiple; 
-	private P1_SumOfMultiples som;
+	private P001_SumOfMultiples som;
 	
 	@Before
 	public void setUp() throws Exception {
 		result = 0;
-		som = new P1_SumOfMultiples();
+		som = new P001_SumOfMultiples();
 	}
 
 	@After

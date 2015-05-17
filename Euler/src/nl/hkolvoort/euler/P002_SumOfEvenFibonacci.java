@@ -18,14 +18,14 @@ import java.util.ArrayList;
  * whose values do not exceed four million, 
  * find the sum of the even-valued terms.
  */
-public class P2_SumOfEvenFibonacci {
+public class P002_SumOfEvenFibonacci {
 	private Integer sum;
 	private Integer limit;	
 	
 	/**
 	 * Constructor sets sum to zero. 
 	 */
-	public P2_SumOfEvenFibonacci() {
+	public P002_SumOfEvenFibonacci() {
 		sum = 0;
 		limit = 0;
 		fibonacciList = new ArrayList<Integer>();
@@ -36,7 +36,7 @@ public class P2_SumOfEvenFibonacci {
 	/**
 	 * Constructor sets sum to zero. 
 	 */
-	public P2_SumOfEvenFibonacci(Integer lim) {
+	public P002_SumOfEvenFibonacci(Integer lim) {
 		sum = 0;
 		limit = lim;
 		fibonacciList = new ArrayList<Integer>();

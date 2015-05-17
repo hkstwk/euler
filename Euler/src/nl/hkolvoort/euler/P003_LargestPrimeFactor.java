@@ -30,11 +30,11 @@ import java.util.ArrayList;
  *       Even More info: http://www.mathsisfun.com/prime-factorization.html
  * 
  */
-public class P3_LargestPrimeFactor {
+public class P003_LargestPrimeFactor {
 	private ArrayList<Long> primeList;
 	private Long input;
 
-	public P3_LargestPrimeFactor(Long input) {
+	public P003_LargestPrimeFactor(Long input) {
 		this.primeList = PrimeHelper.fillPrimeArray((long) Math.sqrt(input));
 		this.input = input;
 	}
@@ -83,7 +83,7 @@ public class P3_LargestPrimeFactor {
 		}
 		System.out.println("You entered : " + number);
 		
-		P3_LargestPrimeFactor p3 = new P3_LargestPrimeFactor(new Long(number));
+		P003_LargestPrimeFactor p3 = new P003_LargestPrimeFactor(new Long(number));
 		System.out.println("Largest Prima Factor of " + number + " = " + p3.primeFactorization());
 	}
 

@@ -4,13 +4,13 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
-import nl.hkolvoort.euler.P3_LargestPrimeFactor;
+import nl.hkolvoort.euler.P003_LargestPrimeFactor;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class P3_LargestPrimeFactorTest {
+public class P003_LargestPrimeFactorTest {
 	private Long result;
 	private Long expected;
 
@@ -32,7 +32,7 @@ public class P3_LargestPrimeFactorTest {
 
 	@Test
 	public void testLargestPrime13195() {
-		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((long) 13195);
+		P003_LargestPrimeFactor lpf = new P003_LargestPrimeFactor((long) 13195);
 		expected = (long) 29;
 		result = lpf.calcLargestPrimeFactor();
 		assertEquals(expected, result);
@@ -40,7 +40,7 @@ public class P3_LargestPrimeFactorTest {
 	
 	@Test
 	public void testLargestPrime() {
-		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((Long.valueOf("600851475143")));
+		P003_LargestPrimeFactor lpf = new P003_LargestPrimeFactor((Long.valueOf("600851475143")));
 		expected = (long) 6857;
 		result = lpf.calcLargestPrimeFactor();
 		assertEquals(expected, result);
@@ -48,7 +48,7 @@ public class P3_LargestPrimeFactorTest {
 	
 	@Test
 	public void testLargestPrimeFast() {
-		P3_LargestPrimeFactor lpf = new P3_LargestPrimeFactor((Long.valueOf("600851475143")));
+		P003_LargestPrimeFactor lpf = new P003_LargestPrimeFactor((Long.valueOf("600851475143")));
 		expected = (long) 6857;
 		result = lpf.primeFactorization();
 		assertEquals(expected, result);

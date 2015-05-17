@@ -15,7 +15,7 @@ import java.util.Collections;
  * 
  */
 
-public class P4_LargestPalindromeProduct {
+public class P004_LargestPalindromeProduct {
 
 	private ArrayList<Integer> palindromes;
 	public static final boolean DEBUG = true;
@@ -24,7 +24,7 @@ public class P4_LargestPalindromeProduct {
 	/**
 	 * Constructor: create empty ArrayList palindromes
 	 */
-	public P4_LargestPalindromeProduct(){
+	public P004_LargestPalindromeProduct(){
 		this.palindromes = new ArrayList<Integer>();
 	}
 	
@@ -70,7 +70,7 @@ public class P4_LargestPalindromeProduct {
 	}
 	
 	public static void main(String[] args){
-        P4_LargestPalindromeProduct p4 = new P4_LargestPalindromeProduct();
+        P004_LargestPalindromeProduct p4 = new P004_LargestPalindromeProduct();
         System.out.println("Maximum Palindrome is: " + p4.getLargestPalindrome());
         p4.findPalindromes(100,1000,NODEBUG);
         System.out.println("Maximum Palindrome is: " + p4.getLargestPalindrome());

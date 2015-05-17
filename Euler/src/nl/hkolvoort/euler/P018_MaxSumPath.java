@@ -19,14 +19,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class P18_MaxSumPath {
+public class P018_MaxSumPath {
 
 	private ArrayList<ArrayList<Integer>> intTriangleBig;
 	
 	/**
 	 * Constructor: create triangle ArrayList
 	 */
-	public P18_MaxSumPath() throws FileNotFoundException {
+	public P018_MaxSumPath() throws FileNotFoundException {
 		this.intTriangleBig = new ArrayList<ArrayList<Integer>>();
 	}
 		
@@ -78,7 +78,7 @@ public class P18_MaxSumPath {
 	}
 	
     public static void main(String[] args) throws FileNotFoundException {
-        P18_MaxSumPath p18 = new P18_MaxSumPath();
+        P018_MaxSumPath p18 = new P018_MaxSumPath();
         //p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p067_triangle.txt");
         p18.loadTriangleFile("C:\\Users\\Harm\\Documents\\p18.txt");
         p18.printTriangle(p18.intTriangleBig);

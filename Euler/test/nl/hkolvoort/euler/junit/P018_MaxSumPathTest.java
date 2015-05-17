@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 
-import nl.hkolvoort.euler.P18_MaxSumPath;
+import nl.hkolvoort.euler.P018_MaxSumPath;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class P18_MaxSumPathTest {
+public class P018_MaxSumPathTest {
 	private Integer result;
 	private Integer expected;
 
@@ -31,9 +31,9 @@ public class P18_MaxSumPathTest {
 
 	@Test
 	public void testMaxPathSumSmallTriangle() {
-		P18_MaxSumPath msp;
+		P018_MaxSumPath msp;
 		try {
-			msp = new P18_MaxSumPath();
+			msp = new P018_MaxSumPath();
 			msp.loadTriangleFile("C:\\Users\\Harm\\Documents\\p18.txt");
 			expected = 1074;
 			result = msp.findMaxSum(msp.getIntTriangleBig());

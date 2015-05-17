@@ -12,13 +12,13 @@ package nl.hkolvoort.euler;
  * Find the sum of all the multiples of 3 or 5 below 1000.
  *
  */
-public class P1_SumOfMultiples {
+public class P001_SumOfMultiples {
 	private Integer sum;
 	
 	/**
 	 * Constructor sets sum to zero. 
 	 */
-	public P1_SumOfMultiples() {
+	public P001_SumOfMultiples() {
 		sum = 0;
 	}
 	

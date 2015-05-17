@@ -6,21 +6,21 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
-import nl.hkolvoort.euler.P2_SumOfEvenFibonacci;
+import nl.hkolvoort.euler.P002_SumOfEvenFibonacci;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class P2_SumOfEvenFibonacciTest {
+public class P002_SumOfEvenFibonacciTest {
 	private Integer result;
 	private boolean isEvenFib;          // isEvenFibonnaci 
-	private P2_SumOfEvenFibonacci soef; //Sum Of Even Fibonacci
+	private P002_SumOfEvenFibonacci soef; //Sum Of Even Fibonacci
 	
 	@Before
 	public void setUp() throws Exception {
 		this.result = 0;
-		soef = new P2_SumOfEvenFibonacci();
+		soef = new P002_SumOfEvenFibonacci();
 	}
 
 	@After

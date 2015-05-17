@@ -2,11 +2,11 @@ package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
 
-public class P10_SumOfPrimes {
+public class P010_SumOfPrimes {
 	private ArrayList<Long> primeList;
 	private Long resultSumOfPrimes;
 	
-	public P10_SumOfPrimes(Long input) {
+	public P010_SumOfPrimes(Long input) {
 		primeList = PrimeHelper.fillPrimeArray(input);
 		resultSumOfPrimes = PrimeHelper.calculateSumOfPrimes(primeList);
 	}

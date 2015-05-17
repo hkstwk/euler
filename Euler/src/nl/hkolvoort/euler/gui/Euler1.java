@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import nl.hkolvoort.euler.P1_SumOfMultiples;
+import nl.hkolvoort.euler.P001_SumOfMultiples;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -170,7 +170,7 @@ public class Euler1 extends JPanel {
 				Timestamp start = new Timestamp(new Date().getTime());
 				textStart.setText(start.toString());
 
-				P1_SumOfMultiples som = new P1_SumOfMultiples();
+				P001_SumOfMultiples som = new P001_SumOfMultiples();
 				textResult.setText(Integer.toString(som.sum(multiple1, multiple2, limit)));
 				
 				Timestamp stop = new Timestamp(new Date().getTime());

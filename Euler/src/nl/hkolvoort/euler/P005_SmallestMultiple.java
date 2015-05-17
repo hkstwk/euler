@@ -25,6 +25,7 @@ package nl.hkolvoort.euler;
  * Group 12, 6, 4, 3, 2, 1
  * Group 11 (prime)
  *
+ * Also we can increase by 2520 each iteration, because then we will always be divisible by all number up to 10.
  *
  */
 public class P005_SmallestMultiple {
@@ -34,7 +35,7 @@ public class P005_SmallestMultiple {
 	 * Constructor sets sum to zero. 
 	 */
 	public P005_SmallestMultiple() {
-		smallestMultiple = 0; // start loop from 20 onwards then increasing by 2520 each time
+		smallestMultiple = 0; // start loop from 0 onwards then increasing by 2520 each time
 	}
 	
 	/**
@@ -64,7 +65,7 @@ public class P005_SmallestMultiple {
 
 	
 	/**
-	 * Method to determine smallest multiple, by constantly stepping +20 (otherwise not divisible by 20)
+	 * Method to determine smallest multiple, by constantly stepping +2520 (otherwise not divisible by 2520)
 	 * @param limit
 	 * @return
 	 */

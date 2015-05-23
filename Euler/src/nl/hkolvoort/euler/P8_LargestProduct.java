@@ -45,17 +45,15 @@ public class P8_LargestProduct {
 	private ArrayList<String> lines;
 	private ArrayList<Product> products;
 	private Integer maxProductIndex;
-
+	private Integer digits;
 	
 	class Product {
 		private Integer start;
-		private Integer stop;
-		private Integer product;
+		private Long product;
 		
 		public Product(){
 			setStart(0);
-			setStop(0);
-			setProduct(0);
+			setProduct(new Long(1));
 		}
 
 		public Integer getStart() {
@@ -66,19 +64,11 @@ public class P8_LargestProduct {
 			this.start = start;
 		}
 
-		public Integer getStop() {
-			return stop;
-		}
-
-		public void setStop(Integer stop) {
-			this.stop = stop;
-		}
-
-		public Integer getProduct() {
+		public Long getProduct() {
 			return product;
 		}
 
-		public void setProduct(Integer product) {
+		public void setProduct(Long product) {
 			this.product = product;
 		}
 	}
@@ -91,12 +81,9 @@ public class P8_LargestProduct {
 		this.lines = new ArrayList<String>();
 		this.products = new ArrayList<Product>();
 		this.maxProductIndex = 0;
+		this.digits = 0;
+	}
 
-	}
-		
-	public ArrayList<Integer> getIntTriangleBig() {
-		return largeNumberArray;
-	}
 
 	public void loadLines(String fileName) throws FileNotFoundException{
 	    // create Scanners 
@@ -115,23 +102,23 @@ public class P8_LargestProduct {
 		while (itr.hasNext()){
 			line = itr.next();
 			for (int i=0; i<line.length(); i++){
-				this.largeNumberArray.add(Integer.parseInt(String.valueOf(line.charAt(i))));
+				this.largeNumberArray.add(Character.getNumericValue(line.charAt(i)));
 			}
 		}
 	}
 	
-	public void calcProducts(){
-		Integer tempMax = 0;
+	public void calcProducts(Integer digits){
+		Long tempMax = new Long(0);
 		Product prod;
+		this.products.clear();
+		this.digits = digits;
 		
-		for (int i=0; i<this.largeNumberArray.size()-4;i++){
+		for (int i=0; i<this.largeNumberArray.size()-digits;i++){
 			prod = new Product();
 			prod.setStart(i);
-			prod.setStop(i+3);
-			prod.setProduct(this.largeNumberArray.get(prod.getStart()) *
-							this.largeNumberArray.get(prod.getStart()+1) * 
-							this.largeNumberArray.get(prod.getStart()+2) *
-							this.largeNumberArray.get(prod.getStop()));
+			for (int j=0; j<digits; j++){
+				prod.setProduct(prod.getProduct() * this.largeNumberArray.get(prod.getStart()+j));
+			}
 			this.products.add(prod);
 			if (prod.getProduct() > tempMax){
 				tempMax = prod.getProduct();
@@ -140,7 +127,19 @@ public class P8_LargestProduct {
 		}
 	}
 	
-	public Integer getMaxProduct(){
+	public void printSolution(){
+		System.out.print("The " + this.digits + " adjacent digits in the 1000-digit number that have the greatest product are ");	
+		for (int i=0; i<this.digits;i++){
+			System.out.print(this.largeNumberArray.get(this.maxProductIndex+i));
+			if (i < this.digits-1){
+				System.out.print(" x " );
+			};
+		}
+		System.out.print(" = " + this.getMaxProduct());
+		System.out.println("  / Starting at position " + this.getMaxProductIndex());
+	}
+	
+	public Long getMaxProduct(){
 		return this.products.get(this.maxProductIndex).getProduct();
 	}
 	
@@ -165,22 +164,16 @@ public class P8_LargestProduct {
 		}
 	}
 	
-	public Integer findMaxSum(ArrayList<ArrayList<Integer>> intTriangle) {
-		for (int i=intTriangle.size()-2;i>=0;i--){
-			for (int j=0; j<intTriangle.get(i).size();j++){
-				intTriangle.get(i).set(j, intTriangle.get(i).get(j) + Math.max(intTriangle.get(i+1).get(j), intTriangle.get(i+1).get(j+1)));
-			}
-		}
-		return intTriangle.get(0).get(0);
-	}
-	
     public static void main(String[] args) throws FileNotFoundException {
         P8_LargestProduct p8 = new P8_LargestProduct();
         p8.loadLines("/Users/harm/Documents/Eclipse/P008_euler.txt");
         p8.convertLines();
         p8.printLargeNumberArray(p8.largeNumberArray);
-        p8.calcProducts();
-        System.out.println("The maximum product is: " + p8.getMaxProduct());
-        System.out.println("The maximum product starts at index : " + p8.getMaxProductIndex());
+        p8.calcProducts(4);
+        p8.printSolution();
+        p8.calcProducts(13);  
+        p8.printSolution();
+        p8.calcProducts(18);  
+        p8.printSolution();
     }
 }

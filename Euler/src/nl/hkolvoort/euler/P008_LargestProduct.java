@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class P8_LargestProduct {
+public class P008_LargestProduct {
 
 	private ArrayList<Integer> largeNumberArray;
 	private ArrayList<String> lines;
@@ -76,7 +76,7 @@ public class P8_LargestProduct {
 	/**
 	 * Constructor: create triangle ArrayList
 	 */
-	public P8_LargestProduct() throws FileNotFoundException {
+	public P008_LargestProduct() throws FileNotFoundException {
 		this.largeNumberArray = new ArrayList<Integer>();
 		this.lines = new ArrayList<String>();
 		this.products = new ArrayList<Product>();
@@ -165,15 +165,15 @@ public class P8_LargestProduct {
 	}
 	
     public static void main(String[] args) throws FileNotFoundException {
-        P8_LargestProduct p8 = new P8_LargestProduct();
-        p8.loadLines("/Users/harm/Documents/Eclipse/P008_euler.txt");
-        p8.convertLines();
-        p8.printLargeNumberArray(p8.largeNumberArray);
-        p8.calcProducts(4);
-        p8.printSolution();
-        p8.calcProducts(13);  
-        p8.printSolution();
-        p8.calcProducts(18);  
-        p8.printSolution();
+        P008_LargestProduct p008 = new P008_LargestProduct();
+        p008.loadLines("/Users/harm/Documents/Eclipse/P008_euler.txt");
+        p008.convertLines();
+        p008.printLargeNumberArray(p008.largeNumberArray);
+        p008.calcProducts(4);
+        p008.printSolution();
+        p008.calcProducts(13);  
+        p008.printSolution();
+        p008.calcProducts(18);  
+        p008.printSolution();
     }
 }

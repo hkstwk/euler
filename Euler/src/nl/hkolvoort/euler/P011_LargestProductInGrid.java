@@ -45,9 +45,6 @@ public class P011_LargestProductInGrid {
 
 	private ArrayList<ArrayList<Integer>> largeNumberArray;
 	private ArrayList<String> lines;
-	private ArrayList<Product> products;
-	private Integer maxProductIndex;
-	private Integer digits;
 	
 	class Product {
 		private Integer start;
@@ -81,9 +78,7 @@ public class P011_LargestProductInGrid {
 	public P011_LargestProductInGrid() throws FileNotFoundException {
 		this.largeNumberArray = new ArrayList<ArrayList<Integer>>();
 		this.lines = new ArrayList<String>();
-		this.products = new ArrayList<Product>();
-		this.maxProductIndex = 0;
-		this.digits = 0;
+		new ArrayList<Product>();
 	}
 
 
@@ -172,26 +167,6 @@ public class P011_LargestProductInGrid {
 		}
 		return maxProduct;
 	}
-	
-	public void printSolution(){
-		System.out.print("The " + this.digits + " adjacent digits in the 1000-digit number that have the greatest product are ");	
-		for (int i=0; i<this.digits;i++){
-			System.out.print(this.largeNumberArray.get(this.maxProductIndex+i));
-			if (i < this.digits-1){
-				System.out.print(" x " );
-			};
-		}
-		System.out.print(" = " + this.getMaxProduct());
-		System.out.println("  / Starting at position " + this.getMaxProductIndex());
-	}
-	
-	public Long getMaxProduct(){
-		return this.products.get(this.maxProductIndex).getProduct();
-	}
-	
-	public Integer getMaxProductIndex(){
-		return this.products.get(this.maxProductIndex).getStart();
-	}
 
 	public void printLargeNumberArray(ArrayList<ArrayList<Integer>> lna){ 
 		for (int i=0; i<lna.get(i).size(); i++){
@@ -213,7 +188,7 @@ public class P011_LargestProductInGrid {
         P011_LargestProductInGrid p011 = new P011_LargestProductInGrid();
         p011.loadLines("/Users/harm/Documents/Eclipse/P011_euler.txt");
         p011.convertLines();
-        p011.printLargeNumberArray(p011.largeNumberArray);
+        p011.printLines();
         System.out.println("Max product horizontal is: " + p011.maxProductHorizontal(p011.largeNumberArray));
         System.out.println("Max product vertical is: " + p011.maxProductVertical(p011.largeNumberArray));
         System.out.println("Max product diagonal (1) is: " + p011.maxProductDiagonal1(p011.largeNumberArray));

@@ -55,47 +55,89 @@ public class P012_TriangularNumber {
 				numberOfDivisors = 0;
 			}
 		}
+
+		public Integer getOrdinal() {
+			return ordinal;
+		}
+
+		public void setOrdinal(Integer ordinal) {
+			this.ordinal = ordinal;
+		}
+
+		public Integer getTriangle() {
+			return triangle;
+		}
+
+		public void setTriangle(Integer triangle) {
+			this.triangle = triangle;
+		}
+
+		public ArrayList<Integer> getDivisors() {
+			return divisors;
+		}
+
+		public void setDivisors(ArrayList<Integer> divisors) {
+			this.divisors = divisors;
+		}
+
+		public Integer getNumberOfDivisors() {
+			return numberOfDivisors;
+		}
+
+		public void setNumberOfDivisors(Integer numberOfDivisors) {
+			this.numberOfDivisors = numberOfDivisors;
+		}
+		
+		public String toString(){
+			String result;
+			result = " Ordinal " + ordinal + " / Triangle sum = " + triangle + " / #divisors = " + numberOfDivisors;
+			result += " / List of divisors " + divisors.toString();
+			return result;
+			
+		}
+		
 	}
 	
-	private ArrayList<Triangle> triangles2;
-	private ArrayList<Integer> triangles_old;
-	private ArrayList<ArrayList<Integer>> divisors;
+	private ArrayList<Triangle> triangles;
+	private Triangle mostDivisorTriangle;
 	
 	public P012_TriangularNumber(){
-		this.triangles_old = new ArrayList<Integer>();
-		this.divisors = new ArrayList<ArrayList<Integer>>();
+		triangles = new ArrayList<Triangle>();
+//		mostDivisorTriangle = new Triangle(2);
 	}
 
-	public ArrayList<Integer> getTriangularNumbers(Integer numberOfTriangles){
-		for (int i = numberOfTriangles; i>=1;i--){
-			Integer triangle = PrimeHelper.calculateTriangle(i);
-			this.triangles_old.add(triangle);
-			this.divisors.add(PrimeHelper.findFactors(triangle));
-		}
-		return this.triangles_old;
-	}
-	
-
-
-	
-	public String toString(){
-		return "The triangle list contains: " + triangles_old.toString();
-	}
-	
-	public void displayDivisors(){
-		Iterator<ArrayList<Integer>> divisorIterator = this.divisors.listIterator();
-		while (divisorIterator.hasNext()){
-			ArrayList<Integer> divisors = divisorIterator.next();
-			System.out.println(" Number of divisors: " + divisors.size() + " / "+ divisors.toString());
+	public void getTriangles(Integer numberOfTriangles){
+		Integer triangle = 0;
+		Integer i = 0;
+		Integer divisorCount = 0;
+		Triangle tempTriangle;
+		
+		while (divisorCount <=500){
+			triangle += i;
+			tempTriangle = new Triangle(i,triangle);
+			triangles.add(tempTriangle);
+			if (tempTriangle.getNumberOfDivisors() > divisorCount){
+				mostDivisorTriangle = tempTriangle;
+				divisorCount = tempTriangle.getNumberOfDivisors();
+				System.out.println(tempTriangle.toString());
+			}
+			i++;
 		}
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		P012_TriangularNumber p012 = new P012_TriangularNumber();
-		p012.getTriangularNumbers(20);
-		System.out.println(p012.toString());
-		p012.displayDivisors();
+		p012.getTriangles(20000);
+		System.out.println("\nHighest count of divisors: " + p012.getMostDivisorTriangle().toString());
+	}
+
+	public Triangle getMostDivisorTriangle() {
+		return mostDivisorTriangle;
+	}
+
+	public void setMostDivisorTriangle(Triangle mostDivisorTriangle) {
+		this.mostDivisorTriangle = mostDivisorTriangle;
 	}
 
 }

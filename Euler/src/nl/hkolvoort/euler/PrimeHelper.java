@@ -1,6 +1,7 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PrimeHelper {
 
@@ -41,6 +42,43 @@ public class PrimeHelper {
 	
 	public static Long getNumberOfPrimes(ArrayList<Long> primeList) {
 		return (long) primeList.size();
+	}
+	
+	public static List<Integer> primeFactors(int numbers) {
+	    int n = numbers;
+	    List<Integer> factors = new ArrayList<Integer>();
+	    for (int i = 2; i <= n / i; i++) {
+	      while (n % i == 0) {
+	        factors.add(i);
+	        n /= i;
+	      }
+	    }
+	    if (n > 1) {
+	      factors.add(n);
+	    }
+	    return factors;
+	  }
+	
+    public static ArrayList<Integer> findFactors(Integer num){
+        int incrementer = 1;
+        if (num % 2 != 0)
+        {
+            incrementer = 2; //only test the odd ones
+        }
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 1; i <= num / 2; i=i+incrementer)
+        {
+            if (num % i == 0)
+            {
+                list.add(i);
+            }
+        }
+        list.add(num);
+        return list;
+    }
+    
+	public static Integer calculateTriangle(Integer number){
+		return (number * (number+1))/2;
 	}
 	
 }

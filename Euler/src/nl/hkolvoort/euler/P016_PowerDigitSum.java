@@ -6,8 +6,7 @@ import java.math.BigInteger;
  * @author harm
  * @date 6-June-2015
  * 
- * Project Euler, Problem 13 Large Sum
- * Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+ * Project Euler, Problem 16 Power Digit Sum
  * 
  */
 public class P016_PowerDigitSum {

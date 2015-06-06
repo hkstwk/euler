@@ -36,14 +36,14 @@ public class P012_TriangularNumber {
 		public Triangle(Integer ord, Integer tri){
 			ordinal = ord;
 			triangle = tri;
-			divisors = PrimeHelper.findFactors(triangle);
+			divisors = PrimeHelper.findFactors2(triangle);
 			setNumberofDivisors();
 		}
 		
 		public Triangle(Integer ord){
 			ordinal = ord;
 			PrimeHelper.calculateTriangle(ordinal);
-			divisors = PrimeHelper.findFactors(triangle);
+			divisors = PrimeHelper.findFactors2(triangle);
 			setNumberofDivisors();
 		}
 		
@@ -103,16 +103,15 @@ public class P012_TriangularNumber {
 	
 	public P012_TriangularNumber(){
 		triangles = new ArrayList<Triangle>();
-//		mostDivisorTriangle = new Triangle(2);
 	}
 
-	public void getTriangles(Integer numberOfTriangles){
+	public void getTriangles(Integer numberOfDivisors){
 		Integer triangle = 0;
 		Integer i = 0;
 		Integer divisorCount = 0;
 		Triangle tempTriangle;
 		
-		while (divisorCount <=500){
+		while (divisorCount <= numberOfDivisors){
 			triangle += i;
 			tempTriangle = new Triangle(i,triangle);
 			triangles.add(tempTriangle);
@@ -125,19 +124,18 @@ public class P012_TriangularNumber {
 		}
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		P012_TriangularNumber p012 = new P012_TriangularNumber();
-		p012.getTriangles(20000);
-		System.out.println("\nHighest count of divisors: " + p012.getMostDivisorTriangle().toString());
-	}
-
 	public Triangle getMostDivisorTriangle() {
 		return mostDivisorTriangle;
 	}
 
 	public void setMostDivisorTriangle(Triangle mostDivisorTriangle) {
 		this.mostDivisorTriangle = mostDivisorTriangle;
+	}
+	
+	public static void main(String[] args) {
+		P012_TriangularNumber p012 = new P012_TriangularNumber();
+		p012.getTriangles(500);
+		System.out.println("\nHighest count of divisors: " + p012.getMostDivisorTriangle().toString());
 	}
 
 }

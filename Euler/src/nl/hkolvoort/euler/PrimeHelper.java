@@ -1,6 +1,7 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PrimeHelper {
@@ -75,6 +76,42 @@ public class PrimeHelper {
         }
         list.add(num);
         return list;
+    }
+    
+    public static ArrayList<Integer> findFactors2(Integer num){
+        int sqrt = (int) Math.sqrt(num);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 1; i <= sqrt; i++)
+        {
+            if (num % i == 0)
+            {
+            	if (i != num/i){
+	                list.add(i);
+	                list.add(num/i);
+            	}
+            	else{
+            		list.add(i);
+            	}
+            }
+        }
+        Collections.sort(list);
+        return list;
+    }
+    
+    public static Integer findFactorsFaster(Integer num){
+        int nod = 0;
+        int sqrt = (int) Math.sqrt(num);
+        for (int i = 1; i <= sqrt ; i++)
+        {
+            if (num % i == 0)
+            {
+                nod += 2;
+            }
+        }
+        if (sqrt * sqrt == num.intValue()){
+        	nod -= 1;
+        }
+        return nod;
     }
     
 	public static Integer calculateTriangle(Integer number){

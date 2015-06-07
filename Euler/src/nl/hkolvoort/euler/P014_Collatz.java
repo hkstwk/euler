@@ -11,14 +11,14 @@ import java.util.ArrayList;
  */
 public class P014_Collatz {
 	
-	private ArrayList<Integer> collatzSequence;
+	private ArrayList<Long> collatzSequence;
 	
 	public P014_Collatz(Integer n){
-		collatzSequence = fillCollatzSequence(n);
+		collatzSequence = fillCollatzSequence(new Long(n));
 	}
 	
-	public ArrayList<Integer> fillCollatzSequence(int n){
-		ArrayList<Integer> sequence = new ArrayList<Integer>();
+	public ArrayList<Long> fillCollatzSequence(Long n){
+		ArrayList<Long> sequence = new ArrayList<Long>();
 		
 		sequence.add(n);
 		while (n>1){
@@ -60,10 +60,8 @@ public class P014_Collatz {
 			if (col.getLength() > maxLength){
 				largestCollatz = i;
 				maxLength = col.getLength();
-				System.out.println(new P014_Collatz(largestCollatz).getCollatzSequence());
 			}
-			col = null;
 		}
-
+		System.out.println(new P014_Collatz(largestCollatz).getCollatzSequence());
 	}
 }

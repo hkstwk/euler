@@ -11,10 +11,10 @@ import java.math.BigInteger;
 public class p025_ThousandDigitFibonacci {
 
 	public static final BigInteger getThousandDigitFibonacci(){
-		BigInteger index = new BigInteger("3");
-		BigInteger fib1 = new BigInteger("1");
-		BigInteger fib2 = new BigInteger("1");
-		BigInteger fib = new BigInteger("2");
+		BigInteger index = new BigInteger("3"); // index is set at 3 initially
+		BigInteger fib1 = new BigInteger("1");  // index 1
+		BigInteger fib2 = new BigInteger("1");  // index 2
+		BigInteger fib = new BigInteger("2");   // index 3
 		Integer digits = fib.toString().length();
 		
 		while (digits < 1000){

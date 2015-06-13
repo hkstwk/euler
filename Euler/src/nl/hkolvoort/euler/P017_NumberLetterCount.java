@@ -62,12 +62,12 @@ public class P017_NumberLetterCount {
 			convert.append("Cannot proces numbers larger than thousand");
 		}
 		
-		if (number <= 0){
-			convert.append("Cannot proces numbers less than or equal to zero");
+		if (number < 0){
+			convert.append("Cannot proces numbers less than zero");
 		}		
 		
 		if (number == 1000){
-			convert.append("thousand");
+			convert.append("one thousand");
 		}
 		
 		if (number < 20 && number > 0){
@@ -80,6 +80,14 @@ public class P017_NumberLetterCount {
 			convert.append(numNames[number % 10]);
 		}		
 		
+		if (number >=100 && number < 1000){
+			convert.append(numNames[number / 100]);
+			convert.append(" ");
+			convert.append("hundred");
+			convert.append((number % 100 != 0) ? " and " : "");
+			convert.append(convertNumberToWords(number % 100));
+		}	
+		
 		
 		return convert.toString();
 	}
@@ -89,10 +97,17 @@ public class P017_NumberLetterCount {
 		System.out.println(P017_NumberLetterCount.convertNumberToWords(1000));
 		System.out.println(P017_NumberLetterCount.convertNumberToWords(0));
 		System.out.println(P017_NumberLetterCount.convertNumberToWords(-1));
-		for (int i=1; i<100;i++){
-			System.out.println(P017_NumberLetterCount.convertNumberToWords(i));
+		
+		Integer letters = 0;
+		for (int i=1; i<=1000;i++){
+			String strippedString = P017_NumberLetterCount.convertNumberToWords(i);
+			strippedString = strippedString.replace(" ", "");
+			strippedString = strippedString.replace("-", "");
+			letters += strippedString.length();
+			System.out.printf("count or letters sofar: %5d / ", letters );
+			System.out.println(strippedString);
 		}
-		System.out.println(P017_NumberLetterCount.convertNumberToWords(20));
+		System.out.println("Total number of letters used: " + letters);
 		
 		
 		

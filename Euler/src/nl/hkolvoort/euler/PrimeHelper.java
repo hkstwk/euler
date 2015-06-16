@@ -2,6 +2,7 @@ package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class PrimeHelper {
@@ -80,6 +81,7 @@ public class PrimeHelper {
     
     public static ArrayList<Integer> findFactors2(Integer num){
         int sqrt = (int) Math.sqrt(num);
+        
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i = 1; i <= sqrt; i++)
         {
@@ -96,6 +98,40 @@ public class PrimeHelper {
         }
         Collections.sort(list);
         return list;
+    }
+    
+    public static ArrayList<Integer> getProperDivisors(Integer num){
+        int sqrt = (int) Math.sqrt(num);
+        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        
+        list.add(1);
+        for (int i = 2; i <= sqrt; i++)
+        {
+            if (num % i == 0)
+            {
+            	if (i>1 && i != num/i){
+	                list.add(i);
+	                list.add(num/i);
+            	}
+            	else{
+            		list.add(i);
+            	}
+            }
+        }
+        Collections.sort(list);
+        return list;
+    }
+    
+    public static Integer sumOfArrayList(ArrayList<Integer> list){
+    	Iterator<Integer> itr = list.iterator();
+    	Integer sum = 0;
+    	
+    	while (itr.hasNext()){
+    		sum += itr.next();
+    	}
+    	
+    	return sum;
     }
     
     public static Integer findFactorsFaster(Integer num){

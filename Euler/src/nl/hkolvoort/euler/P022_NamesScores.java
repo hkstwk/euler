@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -27,18 +28,38 @@ import java.util.List;
  */
 public class P022_NamesScores {
 	
-	private static final List<String> alphabet = Arrays.asList("","a","b","c","d","e","'f","g","h","i","j","k","l","m","n","o","o","p","q","r","s","t","u","v","w","x","y","z");
+	private static final List<String> alphabet = Arrays.asList("","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
 	private ArrayList<String> names = P022_NamesScores.loadNames();
 	
 	public String toString(){
 		return names.toString();
 	}
 	
-	public static boolean getAlphabetPosition(String letter){
-		return alphabet.contains(letter);
+	public Integer getPosition(String name){
+		return names.indexOf(name)+1;
 	}
-
 	
+	public Integer getNameSum(String name){
+		Integer sum = 0;
+		char[] tempName = name.toCharArray();
+		for (int i=0; i<tempName.length; i++){
+			sum += alphabet.indexOf(String.valueOf(tempName[i]));
+		}
+		return sum;
+	}	
+	
+	public Integer getNameScore(String name){
+		return getPosition(name) * getNameSum(name);
+	}
+	
+	public Long getNameScores(){
+		Iterator<String> itr = names.iterator();
+		Long totalNameScore = new Long("0");
+		while (itr.hasNext()){
+			totalNameScore = totalNameScore + (getNameScore(itr.next())) ;
+		}
+		return totalNameScore;
+	}
 	
 	public static ArrayList<String> loadNames(){
 		String csvFile = "/Users/harm/Documents/Eclipse/P022_euler_names.txt";
@@ -80,8 +101,8 @@ public class P022_NamesScores {
 		P022_NamesScores ns = new P022_NamesScores();
 		System.out.println(ns.toString());
 		
-		System.out.println(P022_NamesScores.getAlphabetPosition("H"));
-	
+		System.out.println("Name score of COLIN = " + ns.getNameScore("COLIN"));
+		System.out.println("Names score of all names = " + ns.getNameScores());
 	}
 
 }

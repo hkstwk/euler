@@ -1,13 +1,12 @@
 package nl.hkolvoort.euler;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author harm
@@ -27,6 +26,19 @@ import java.util.Scanner;
  * 
  */
 public class P022_NamesScores {
+	
+	private static final List<String> alphabet = Arrays.asList("","a","b","c","d","e","'f","g","h","i","j","k","l","m","n","o","o","p","q","r","s","t","u","v","w","x","y","z");
+	private ArrayList<String> names = P022_NamesScores.loadNames();
+	
+	public String toString(){
+		return names.toString();
+	}
+	
+	public static boolean getAlphabetPosition(String letter){
+		return alphabet.contains(letter);
+	}
+
+	
 	
 	public static ArrayList<String> loadNames(){
 		String csvFile = "/Users/harm/Documents/Eclipse/P022_euler_names.txt";
@@ -65,7 +77,10 @@ public class P022_NamesScores {
 
 
 	public static void main(String[] args) throws FileNotFoundException {
-		System.out.println(P022_NamesScores.loadNames());
+		P022_NamesScores ns = new P022_NamesScores();
+		System.out.println(ns.toString());
+		
+		System.out.println(P022_NamesScores.getAlphabetPosition("H"));
 	
 	}
 

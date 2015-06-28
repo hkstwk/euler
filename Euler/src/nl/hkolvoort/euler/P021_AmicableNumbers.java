@@ -23,9 +23,9 @@ public class P021_AmicableNumbers {
 		ArrayList<Integer> amicableNumbers = new ArrayList<Integer>();
 		
 		for (int i=1; i<10000; i++){
-			ArrayList<Integer> divisors1 = PrimeHelper.getProperDivisors(i);
-			Integer sumDivisors1 = PrimeHelper.sumOfArrayList(divisors1);
-			Integer sumDivisors2 = PrimeHelper.sumOfArrayList(PrimeHelper.getProperDivisors(sumDivisors1));
+			ArrayList<Integer> divisors1 = EulerHelper.getProperDivisors(i);
+			Integer sumDivisors1 = EulerHelper.sumOfArrayList(divisors1);
+			Integer sumDivisors2 = EulerHelper.sumOfArrayList(EulerHelper.getProperDivisors(sumDivisors1));
 			if ((sumDivisors2.intValue() == i) && (sumDivisors1.intValue() != i)){
 				if (!amicableNumbers.contains(i)){
 					amicableNumbers.add(i);
@@ -34,7 +34,7 @@ public class P021_AmicableNumbers {
 			}
 		}
 		System.out.println(amicableNumbers);
-		System.out.println(PrimeHelper.sumOfArrayList(amicableNumbers));
+		System.out.println(EulerHelper.sumOfArrayList(amicableNumbers));
 	}
 
 }

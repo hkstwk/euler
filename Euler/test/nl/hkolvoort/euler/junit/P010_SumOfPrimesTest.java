@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 
 import nl.hkolvoort.euler.P010_SumOfPrimes;
-import nl.hkolvoort.euler.PrimeHelper;
+import nl.hkolvoort.euler.EulerHelper;
 
 import org.junit.After;
 import org.junit.Before;
@@ -69,38 +69,38 @@ public class P010_SumOfPrimesTest {
 	
 	@Test
 	public void testPrime2() {
-		boolean isPrime = PrimeHelper.isPrime((long)2);
+		boolean isPrime = EulerHelper.isPrime((long)2);
 		assertTrue(isPrime);
 	}
 
 	@Test
 	public void testPrime3() {
-		boolean isPrime = PrimeHelper.isPrime((long) 3);
+		boolean isPrime = EulerHelper.isPrime((long) 3);
 		assertTrue(isPrime);
 	}
 
 	@Test
 	public void testPrime4() {
-		boolean isPrime = PrimeHelper.isPrime((long) 4);
+		boolean isPrime = EulerHelper.isPrime((long) 4);
 		assertFalse(isPrime);
 	}
 
 	@Test
 	public void testPrime23() {
-		boolean isPrime = PrimeHelper.isPrime((long) 23);
+		boolean isPrime = EulerHelper.isPrime((long) 23);
 		assertTrue(isPrime);
 	}
 
 	@Test
 	public void testPrime6() {
-		boolean isPrime = PrimeHelper.isPrime((long) 6);
+		boolean isPrime = EulerHelper.isPrime((long) 6);
 		assertFalse(isPrime);
 	}
 	
 	@Test
 	public void testHowManyPrimes6() {
 		P010_SumOfPrimes n = new P010_SumOfPrimes((long) 6);
-		result = PrimeHelper.getNumberOfPrimes(n.getPrimeList());
+		result = EulerHelper.getNumberOfPrimes(n.getPrimeList());
 		expected = (long) 3;
 		assertEquals(expected, result);
 	}
@@ -108,7 +108,7 @@ public class P010_SumOfPrimesTest {
 	@Test
 	public void testHowManyPrimes10() {
 		P010_SumOfPrimes n = new P010_SumOfPrimes((long) 10);
-		result = PrimeHelper.getNumberOfPrimes(n.getPrimeList());
+		result = EulerHelper.getNumberOfPrimes(n.getPrimeList());
 		expected = (long) 4;
 		assertEquals(expected, result);
 	}

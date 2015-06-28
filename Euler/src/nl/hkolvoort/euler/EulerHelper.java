@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class PrimeHelper {
+public class EulerHelper {
 
 	//checks whether a long is prime or not.
 	//more info on http://en.wikipedia.org/wiki/Primality_test 
@@ -27,7 +27,7 @@ public class PrimeHelper {
 	public static ArrayList<Long> fillPrimeArray(Long countPrimesTo) {
 		ArrayList<Long> primeList = new ArrayList<Long>();
 		for (Long i=(long) 0; i < countPrimesTo; i++ ) {
-			if (PrimeHelper.isPrime(i)) {
+			if (EulerHelper.isPrime(i)) {
 				primeList.add(i);
 			}
 		}
@@ -122,6 +122,7 @@ public class PrimeHelper {
         Collections.sort(list);
         return list;
     }
+    
     
     public static Integer sumOfArrayList(ArrayList<Integer> list){
     	Iterator<Integer> itr = list.iterator();

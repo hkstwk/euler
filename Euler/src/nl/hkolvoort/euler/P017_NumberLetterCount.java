@@ -53,7 +53,6 @@ public class P017_NumberLetterCount {
 		    "eighteen",
 		    "nineteen"
 	};
-	private static final String thousand = "thousand";
 	
 	public static String convertNumberToWords(Integer number){
 		StringBuilder convert = new StringBuilder(); 

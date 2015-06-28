@@ -7,8 +7,8 @@ public class P010_SumOfPrimes {
 	private Long resultSumOfPrimes;
 	
 	public P010_SumOfPrimes(Long input) {
-		primeList = PrimeHelper.fillPrimeArray(input);
-		resultSumOfPrimes = PrimeHelper.calculateSumOfPrimes(primeList);
+		primeList = EulerHelper.fillPrimeArray(input);
+		resultSumOfPrimes = EulerHelper.calculateSumOfPrimes(primeList);
 	}
 	
 	public String getFormattedResult() {

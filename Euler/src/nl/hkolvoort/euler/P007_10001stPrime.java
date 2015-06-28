@@ -24,7 +24,7 @@ public class P007_10001stPrime {
 		Long number = new Long(2);
 		
 		while (count<=10001){
-			if (PrimeHelper.isPrime(number)){
+			if (EulerHelper.isPrime(number)){
 				primes.add(count, number);
 				count++;
 			}

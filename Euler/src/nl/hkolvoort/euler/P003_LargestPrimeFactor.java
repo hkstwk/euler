@@ -35,7 +35,7 @@ public class P003_LargestPrimeFactor {
 	private Long input;
 
 	public P003_LargestPrimeFactor(Long input) {
-		this.primeList = PrimeHelper.fillPrimeArray((long) Math.sqrt(input));
+		this.primeList = EulerHelper.fillPrimeArray((long) Math.sqrt(input));
 		this.input = input;
 	}
 

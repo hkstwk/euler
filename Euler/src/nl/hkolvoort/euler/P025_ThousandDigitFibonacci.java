@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * 
  * What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
  */
-public class p025_ThousandDigitFibonacci {
+public class P025_ThousandDigitFibonacci {
 
 	public static final BigInteger getThousandDigitFibonacci(){
 		BigInteger index = new BigInteger("3"); // index is set at 3 initially
@@ -36,7 +36,7 @@ public class p025_ThousandDigitFibonacci {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Index = " + p025_ThousandDigitFibonacci.getThousandDigitFibonacci());
+		System.out.println("Index = " + P025_ThousandDigitFibonacci.getThousandDigitFibonacci());
 
 	}
 

@@ -1,7 +1,6 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * @author harm
@@ -36,14 +35,14 @@ public class P012_TriangularNumber {
 		public Triangle(Integer ord, Integer tri){
 			ordinal = ord;
 			triangle = tri;
-			divisors = PrimeHelper.findFactors2(triangle);
+			divisors = EulerHelper.findFactors2(triangle);
 			setNumberofDivisors();
 		}
 		
 		public Triangle(Integer ord){
 			ordinal = ord;
-			PrimeHelper.calculateTriangle(ordinal);
-			divisors = PrimeHelper.findFactors2(triangle);
+			EulerHelper.calculateTriangle(ordinal);
+			divisors = EulerHelper.findFactors2(triangle);
 			setNumberofDivisors();
 		}
 		

@@ -26,13 +26,7 @@ public class P023_NonAbundentSums {
 
 	public static Integer sumOfProperDivisors(Integer number){
 		ArrayList<Integer> properDivisors = EulerHelper.getProperDivisors(number);
-		Iterator<Integer> itr = properDivisors.iterator();
-		Integer sum = 0;
-		
-		while (itr.hasNext()){
-			sum += itr.next();
-		}
-		return sum;
+		return EulerHelper.sumOfArrayList(properDivisors);
 	}
 	
 	public static ArrayList<Integer> getAbundantNumbers(Integer limit){

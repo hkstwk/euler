@@ -1,7 +1,6 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * @author harm
@@ -24,6 +23,8 @@ import java.util.Iterator;
  */
 public class P023_NonAbundentSums {
 
+	public static final Integer limit = 28123;
+	
 	public static Integer sumOfProperDivisors(Integer number){
 		ArrayList<Integer> properDivisors = EulerHelper.getProperDivisors(number);
 		return EulerHelper.sumOfArrayList(properDivisors);
@@ -54,12 +55,36 @@ public class P023_NonAbundentSums {
 		return abundantNumbers;
 	}
 	
+	public static ArrayList<Integer> getAbundantSums(ArrayList<Integer> abundantNumbers){
+		ArrayList<Integer> abundantSums = new ArrayList<Integer>();
+		
+		for (int i=0; i<abundantNumbers.size();i++){
+			for (int j=i; j<abundantNumbers.size(); j++){
+				Integer sum = abundantNumbers.get(i)+abundantNumbers.get(j);
+				if ((sum < limit) && !abundantSums.contains(sum)){
+					//System.out.println(sum);
+					abundantSums.add(sum);					
+				}
+			}
+		}
+		abundantSums.sort(null);
+		return abundantSums;
+	}
+	
+	public static Integer getSolution(ArrayList<Integer> abundantSums){
+		Integer sum = 0;
+		for (int i=0; i<limit;i++){
+			if(!abundantSums.contains(i)){
+				sum += i;
+			}
+		}
+		return sum;
+	}
 	
 	
 	public static void main(String[] args) {
-		System.out.println(P023_NonAbundentSums.sumOfProperDivisors(28));
-		System.out.println(P023_NonAbundentSums.getAbundantNumbers(28123));
-
+		System.out.println(sumOfProperDivisors(28));
+		System.out.println(getSolution(getAbundantSums(getAbundantNumbers(limit))));
 	}
 
 }

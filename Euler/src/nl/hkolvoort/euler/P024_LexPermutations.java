@@ -67,8 +67,8 @@ public class P024_LexPermutations {
 		int[] array = {0, 1, 2, 3, 4,5, 6, 7, 8, 9};  // Must start at lowest permutation
 		int count = 0;
 		do {
-		    System.out.println(Arrays.toString(array));
-		    count++;
+			count++;
+			System.out.println(count + " - " + Arrays.toString(array));
 		} while (nextPermutation(array) && count < 1000000);
 	}
 

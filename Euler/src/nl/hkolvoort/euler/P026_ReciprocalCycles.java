@@ -73,7 +73,7 @@ public class P026_ReciprocalCycles {
 		
 		Iterator<Integer> li = repeatingDecimals.iterator();
 		while (li.hasNext()){
-			System.out.println(P026_ReciprocalCycles.getRemainderOfNonTerminatingDecimal(li.next()));
+			System.out.println((li.next()).toString());
 		}
 	}
 

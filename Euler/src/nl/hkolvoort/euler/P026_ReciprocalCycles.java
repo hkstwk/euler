@@ -1,6 +1,7 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -47,8 +48,13 @@ public class P026_ReciprocalCycles {
 		}
 	}
 	
-	public static String longDivision(Integer denominator){
-		return "not yet implemented";
+	
+	public static List<Integer> longDivision(Integer denominator){
+		List<Integer> remainder = new ArrayList<Integer>();
+		
+		Integer numerator = 1;
+		
+		return remainder;
 	}
 
 	
@@ -58,13 +64,17 @@ public class P026_ReciprocalCycles {
 	public static void main(String[] args) {
 		List<Integer> repeatingDecimals = new ArrayList<Integer>();
 			
-		for (int i=1; i<=1000; i++){
+		for (int i=1; i<=10; i++){
 			if (!P026_ReciprocalCycles.isTerminatingDecimal(i)){
 				repeatingDecimals.add(i);				
 			}
 		}
-		
 		System.out.println(repeatingDecimals);
+		
+		Iterator<Integer> li = repeatingDecimals.iterator();
+		while (li.hasNext()){
+			System.out.println(P026_ReciprocalCycles.getRemainderOfNonTerminatingDecimal(li.next()));
+		}
 	}
 
 }

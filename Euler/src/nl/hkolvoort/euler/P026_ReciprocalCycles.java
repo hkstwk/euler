@@ -1,8 +1,9 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @author Harm
@@ -28,8 +29,16 @@ import java.util.List;
  *	recurring cycle in its decimal fraction part.
  */
 
-public class P026_ReciprocalCycles {
 
+
+public class P026_ReciprocalCycles {
+	
+	private RecurringCycle recurringCycle;
+
+	public P026_ReciprocalCycles(){
+		recurringCycle = new RecurringCycle();
+	}
+	
 	// works for denominators up till 1000
 	public static boolean isTerminatingDecimal(Integer denominator){
 		if (denominator <= 0 || denominator > 1000) throw new IllegalArgumentException("Denominator <= 0 or > 1000 not supported");
@@ -48,13 +57,50 @@ public class P026_ReciprocalCycles {
 		}
 	}
 	
+	private Integer getNextNumerator(Integer numerator, Integer denominator){
+		while (numerator / denominator == 0){
+			numerator *= 10;
+		}
+		return numerator;
+	}
 	
-	public static List<Integer> longDivision(Integer denominator){
-		List<Integer> remainder = new ArrayList<Integer>();
-		
-		Integer numerator = 1;
-		
-		return remainder;
+	private boolean recurringRemainder(Integer remainder, Set<Integer> remainders){
+		if (remainders.contains(remainder)){
+			return true;
+		} 
+		else{
+			return false;
+		}
+	}
+	
+	public void longDivision(Integer numerator, Integer denominator){
+		boolean isRepeatingRemainder = false;
+		Integer remainder = 0;
+		List<Integer> repeatingDecimals = new ArrayList<Integer>();
+		Set<Integer> remainders = new TreeSet<Integer>();
+			
+		while (!isRepeatingRemainder){
+			while (numerator / denominator == 0){
+				numerator *= 10;
+				repeatingDecimals.add(0);
+
+			}
+			remainder = numerator % denominator;
+			if (recurringRemainder(remainder, remainders)){
+				isRepeatingRemainder = true;
+				if (repeatingDecimals.size() > recurringCycle.getLength()){
+					recurringCycle.setLength(repeatingDecimals.size()-1);
+					recurringCycle.setRepeatingDecimals(repeatingDecimals);
+					System.out.println(repeatingDecimals.toString());
+				}
+			}
+			else {
+					remainders.add(remainder);
+					repeatingDecimals.add(numerator / denominator);
+					System.out.println(numerator + " + " + numerator / denominator + " + " + remainder);
+					numerator = remainder * 10;
+				}
+			}
 	}
 
 	
@@ -64,17 +110,19 @@ public class P026_ReciprocalCycles {
 	public static void main(String[] args) {
 		List<Integer> repeatingDecimals = new ArrayList<Integer>();
 			
-		for (int i=1; i<=10; i++){
+		for (int i=1000; i>1; i--){
 			if (!P026_ReciprocalCycles.isTerminatingDecimal(i)){
 				repeatingDecimals.add(i);				
 			}
 		}
 		System.out.println(repeatingDecimals);
 		
-		Iterator<Integer> li = repeatingDecimals.iterator();
-		while (li.hasNext()){
-			System.out.println((li.next()).toString());
-		}
+		P026_ReciprocalCycles p026 = new P026_ReciprocalCycles();
+//		for (Integer i : repeatingDecimals){
+//			p026.longDivision(1, i);
+//		}
+		p026.longDivision(1,7);
+		System.out.println(p026.recurringCycle.toString());
 	}
 
 }

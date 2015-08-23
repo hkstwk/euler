@@ -3,6 +3,7 @@ package nl.hkolvoort.euler;
 import java.util.List;
 
 public class RecurringCycle {
+	private Integer denominator;
 	private Integer length;
 	private List<Integer> repeatingDecimals;
 	
@@ -11,6 +12,14 @@ public class RecurringCycle {
 		setRepeatingDecimals(null);
 	}
 	
+	public Integer getDenominator() {
+		return denominator;
+	}
+
+	public void setDenominator(Integer denominator) {
+		this.denominator = denominator;
+	}
+
 	public void setLength(Integer length){
 		this.length = length;
 	}
@@ -28,6 +37,6 @@ public class RecurringCycle {
 	}
 	
 	public String toString(){
-		return "Length = " + length + " / " + repeatingDecimals.toString();
+		return "Denominator = " + denominator + " / Length = " + length + " / " + repeatingDecimals.toString();
 	}
 }

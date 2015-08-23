@@ -1,11 +1,15 @@
 package nl.hkolvoort.euler;
 
+import java.util.Iterator;
 import java.util.List;
+
 
 public class RecurringCycle {
 	private Integer denominator;
 	private Integer length;
-	private List<Integer> repeatingDecimals;
+	private Integer beginPosition;
+	private Integer endPosition;
+	private List<Integer> longDivisionDecimals;
 	
 	public RecurringCycle(){
 		setLength(0);
@@ -28,15 +32,49 @@ public class RecurringCycle {
 		return length;
 	}
 
+	public Integer getBeginPosition() {
+		return beginPosition;
+	}
+
+	public void setBeginPosition(Integer beginPosition) {
+		this.beginPosition = beginPosition;
+	}
+
+	public Integer getEndPosition() {
+		return endPosition;
+	}
+
+	public void setEndPosition(Integer endPosition) {
+		this.endPosition = endPosition;
+	}
+
 	public List<Integer> getRepeatingDecimals() {
-		return repeatingDecimals;
+		return longDivisionDecimals;
 	}
 
 	public void setRepeatingDecimals(List<Integer> repeatingDecimals) {
-		this.repeatingDecimals = repeatingDecimals;
+		this.longDivisionDecimals = repeatingDecimals;
+	}
+	
+	private String convertString(List<Integer> list){
+		Iterator<Integer> itr = list.iterator();
+		boolean isFirstInteger = true;
+		StringBuilder sb = new StringBuilder();
+		while (itr.hasNext()){
+			sb.append(Integer.toString(itr.next()));
+			if (isFirstInteger){
+				sb.append(",");
+				isFirstInteger = false;
+			}
+		}
+		return sb.toString();
 	}
 	
 	public String toString(){
-		return "Denominator = " + denominator + " / Length = " + length + " / " + repeatingDecimals.toString();
+		return "Denominator = " + denominator + 
+			   " / Length = " + length +
+			   " / Beginning at " + beginPosition +
+			   " / Ending at " + endPosition +
+			   " / " +convertString(longDivisionDecimals);
 	}
 }

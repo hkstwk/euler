@@ -71,7 +71,6 @@ public class P026_ReciprocalCycles {
 		Integer originalDenominator = denominator;
 		Integer remainder = 0;
 		Integer division = 0;
-		Integer prevNumerator = 0;
 		List<Integer> longDivisionDecimals = new ArrayList<Integer>();
 		List<Integer> numerators = new ArrayList<Integer>();
 		List<Integer> remainders = new ArrayList<Integer>();
@@ -82,20 +81,19 @@ public class P026_ReciprocalCycles {
 			
 			if (recurringNumerator(numerator, numerators)){
 				isRepeatingNumerator = true;
-				System.out.println(remainders.toString());
-				System.out.println(remainder + " on position " + remainders.indexOf(remainder));
 				if (longDivisionDecimals.size() > recurringCycle.getLength()){
 					recurringCycle.setDenominator(originalDenominator);
 					recurringCycle.setLength(longDivisionDecimals.size()-1-remainders.indexOf(remainder)+1);
+					recurringCycle.setBeginPosition(remainders.indexOf(remainder)+1);
+					recurringCycle.setEndPosition(remainders.size()+1);
 					recurringCycle.setRepeatingDecimals(longDivisionDecimals);
-					System.out.println(longDivisionDecimals.toString());
+					System.out.println(recurringCycle.toString());
 				}
 			}
 			else {
 					numerators.add(numerator);
 					remainders.add(remainder);
 					longDivisionDecimals.add(division);
-					prevNumerator = numerator;
 					numerator = remainder * 10;
 				}
 			}
@@ -108,20 +106,87 @@ public class P026_ReciprocalCycles {
 	public static void main(String[] args) {
 		List<Integer> repeatingDecimals = new ArrayList<Integer>();
 			
-		for (int i=1000; i>900; i--){
+		for (int i=1000; i>1; i--){
 			if (!P026_ReciprocalCycles.isTerminatingDecimal(i)){
 				repeatingDecimals.add(i);				
 			}
 		}
-		System.out.println(repeatingDecimals);
 		
 		P026_ReciprocalCycles p026 = new P026_ReciprocalCycles();
-		for (Integer i : repeatingDecimals){
-			p026.longDivision(1, i);
-		}
-//		p026.longDivision(1,17);
-		System.out.println(p026.recurringCycle.toString());
+		p026.longDivision(1, 3);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1, 6);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1, 7);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1, 9);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,11);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,12);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,13);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,14);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,15);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,17);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,18);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,19);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,21);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,22);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,23);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,24);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,26);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,27);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,28);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,29);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,30);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,31);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,33);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,34);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,35);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,36);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,37);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,38);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,39);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,41);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,42);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,43);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,44);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,45);
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,46);
+		
+		
+//		for (Integer i : repeatingDecimals){
+//			p026.longDivision(1, i);
+//		}
 	}
-
 }
        

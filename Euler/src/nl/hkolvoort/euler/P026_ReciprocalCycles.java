@@ -84,7 +84,6 @@ public class P026_ReciprocalCycles {
 					recurringCycle.setBeginPosition(remainders.indexOf(remainder));
 					recurringCycle.setEndPosition(remainders.size()-2);
 					recurringCycle.setRepeatingDecimals(longDivisionDecimals);
-					System.out.println(recurringCycle.toString());
 				}
 			}
 			else {
@@ -93,14 +92,9 @@ public class P026_ReciprocalCycles {
 					numerators.add(numerator);
 					remainders.add(remainder);
 					longDivisionDecimals.add(division);
-					System.out.println("denominator " + denominator.toString());
-					System.out.println("numerators " + numerators.toString());
-					System.out.println("remainders " + remainders.toString());
-					System.out.println("decimals " + longDivisionDecimals.toString());
 					numerator = remainder * 10;
 				}
 			}
-		System.out.println();
 	}
 
 	
@@ -117,81 +111,10 @@ public class P026_ReciprocalCycles {
 		}
 		
 		P026_ReciprocalCycles p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1, 3);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1, 6);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1, 7);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1, 9);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,11);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,12);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,13);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,14);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,15);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,17);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,18);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,19);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,21);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,22);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,23);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,24);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,26);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,27);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,28);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,29);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,30);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,31);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,33);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,34);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,35);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,36);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,37);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,38);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,39);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,41);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,42);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,43);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,44);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,45);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,46);
-		p026 = new P026_ReciprocalCycles();
-		p026.longDivision(1,983);		
-		
-//		for (Integer i : repeatingDecimals){
-//			p026.longDivision(1, i);
-//		}
+		for (Integer i : repeatingDecimals){
+			p026.longDivision(1, i);
+		}
+		System.out.println(p026.recurringCycle.toString());
 	}
 }
        

@@ -71,10 +71,10 @@ public class RecurringCycle {
 	}
 	
 	public String toString(){
-		return "Denominator = " + denominator + 
-			   " / Length = " + length +
-			   " / Beginning at " + beginPosition +
-			   " / Ending at " + endPosition +
-			   " / " +convertString(longDivisionDecimals);
+		return "Fraction = 1/" + String.format("%-2s", denominator) +
+			   " || Period length = " + String.format("%2d", length) +
+			   " || Begin " + String.format("%2d", beginPosition) +
+			   " || End " + String.format("%2d", endPosition) +
+			   " || Value " +convertString(longDivisionDecimals);
 	}
 }

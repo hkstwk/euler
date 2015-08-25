@@ -76,27 +76,31 @@ public class P026_ReciprocalCycles {
 		List<Integer> remainders = new ArrayList<Integer>();
 			
 		while (!isRepeatingNumerator){
-			division = numerator / denominator;
-			remainder = numerator % denominator;
-			
 			if (recurringNumerator(numerator, numerators)){
 				isRepeatingNumerator = true;
 				if (longDivisionDecimals.size() > recurringCycle.getLength()){
 					recurringCycle.setDenominator(originalDenominator);
-					recurringCycle.setLength(longDivisionDecimals.size()-1-remainders.indexOf(remainder)+1);
-					recurringCycle.setBeginPosition(remainders.indexOf(remainder)+1);
-					recurringCycle.setEndPosition(remainders.size()+1);
+					recurringCycle.setLength(remainders.size()-1-remainders.indexOf(remainder));
+					recurringCycle.setBeginPosition(remainders.indexOf(remainder));
+					recurringCycle.setEndPosition(remainders.size()-2);
 					recurringCycle.setRepeatingDecimals(longDivisionDecimals);
 					System.out.println(recurringCycle.toString());
 				}
 			}
 			else {
+					division = numerator / denominator;
+					remainder = numerator % denominator;
 					numerators.add(numerator);
 					remainders.add(remainder);
 					longDivisionDecimals.add(division);
+					System.out.println("denominator " + denominator.toString());
+					System.out.println("numerators " + numerators.toString());
+					System.out.println("remainders " + remainders.toString());
+					System.out.println("decimals " + longDivisionDecimals.toString());
 					numerator = remainder * 10;
 				}
 			}
+		System.out.println();
 	}
 
 	
@@ -182,7 +186,8 @@ public class P026_ReciprocalCycles {
 		p026.longDivision(1,45);
 		p026 = new P026_ReciprocalCycles();
 		p026.longDivision(1,46);
-		
+		p026 = new P026_ReciprocalCycles();
+		p026.longDivision(1,983);		
 		
 //		for (Integer i : repeatingDecimals){
 //			p026.longDivision(1, i);

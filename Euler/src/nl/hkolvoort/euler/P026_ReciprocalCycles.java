@@ -45,22 +45,18 @@ public class P026_ReciprocalCycles {
 		recurringCycle = new RecurringCycle();
 	}
 	
-	// works for denominators up till 1000
 
-	public static boolean isTerminatingDecimal(Integer denominator){
-		if (denominator <= 0 || denominator > 1000) throw new IllegalArgumentException("Denominator <= 0 or > 1000 not supported");
-		
-		if ((denominator > 0) && (denominator <= 10) && ((10 % denominator == 0) || (100 % denominator == 0) || (1000 % denominator == 0))){
-			return true;
-		}
-		else if ((denominator > 10) && (denominator <= 100) && ((100 % denominator == 0 || (1000 % denominator == 0)))){
-			return true;
-		}
-		else if ((denominator > 100) && (denominator <= 1000) && (1000 % denominator == 0)){
-			return true;
+	public static boolean fractionIsRecurringDecimal(Integer denominator){
+		/* TODO 
+		 This works up till 1000. Needs upgrade to more generic algorithm 
+		 If the prime factorization of the denominator of a fraction has only factors of 2 and factors of 5, 
+		 the decimal expression terminates.  If there is any prime factor in the denominator other than 2 or 5, 
+		 then the decimal expression repeats.  */
+		if ((10 % denominator == 0) || (100 % denominator == 0) || (1000 % denominator == 0)){
+			return false;
 		}
 		else{
-			return false;
+			return true;
 		}
 	}
 	
@@ -71,6 +67,11 @@ public class P026_ReciprocalCycles {
 		else{
 			return false;
 		}
+	}
+	
+	private static List<Integer> determineRecurringCycle(Integer denominator){
+		// TODO create LongDivision algorithm
+		return new ArrayList<Integer>();
 	}
 	
 	public void longDivision(Integer numerator, Integer denominator){
@@ -112,7 +113,7 @@ public class P026_ReciprocalCycles {
 		List<Integer> repeatingDecimals = new ArrayList<Integer>();
 			
 		for (int i=1000; i>1; i--){
-			if (!P026_ReciprocalCycles.isTerminatingDecimal(i)){
+			if (P026_ReciprocalCycles.fractionIsRecurringDecimal(i)){
 				repeatingDecimals.add(i);				
 			}
 		}

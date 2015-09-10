@@ -7,19 +7,27 @@ import java.util.List;
  * @author Harm
  * @date 15-Aug-2015
  * 
- *	A unit fraction contains 1 in the numerator. 
- *	The decimal representation of the unit fractions 
+ * 	A terminating decimal is a decimal number that has digits that do not go on forever.
+ *	like 1/4 = 0,25 
+ *  and 1/8 = 0,125
+ *	
+ *	A Recurring decimal is a decimal number that has digits that repeat forever.
+ *	like 1/3 = 0,333... (the 3 repeats forever) 
+ *  and 1/7 = 0,142857142857...  (the recurring cycle "142857" repeats forever)
+ * 
+ *	A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions 
  *	with denominators 2 to 10 are given:
  *	
- *	1/2	= 	0.5
- *	1/3	= 	0.(3)
- *	1/4	= 	0.25
- *	1/5	= 	0.2
- *	1/6	= 	0.1(6)
- *	1/7	= 	0.(142857)
- *	1/8	= 	0.125
- *	1/9	= 	0.(1)
- *	1/10	= 	0.1
+ *	1/2	= 	0.5 (terminating decimal)
+ *	1/3	= 	0.(3) (repeating decimal)
+ *	1/4	= 	0.25 (terminating)
+ *	1/5	= 	0.2 (terminating)
+ *	1/6	= 	0.1(6) (repeating)
+ *	1/7	= 	0.(142857) (repeating)
+ *	1/8	= 	0.125 (terminating)
+ *	1/9	= 	0.(1)(repeating)
+ *	1/10	= 	0.1 (terminating)
+ *
  *	Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. 
  *	It can be seen that 1/7 has a 6-digit recurring cycle.
  *	
@@ -38,6 +46,7 @@ public class P026_ReciprocalCycles {
 	}
 	
 	// works for denominators up till 1000
+
 	public static boolean isTerminatingDecimal(Integer denominator){
 		if (denominator <= 0 || denominator > 1000) throw new IllegalArgumentException("Denominator <= 0 or > 1000 not supported");
 		

@@ -25,15 +25,12 @@ import java.util.List;
 
 public class P026_ReciprocalCycles {
 	
-	private RecurringCycle currentRecurringCycle;
 	private RecurringCycle longestRecurringCycle;
 
 	public P026_ReciprocalCycles(){
-		currentRecurringCycle = new RecurringCycle();
 		longestRecurringCycle = new RecurringCycle();
 	}
 	
-
 	public static boolean fractionIsRecurringDecimal(Integer denominator){
 		/* TODO 
 		 This works up till 1000. Needs upgrade to more generic algorithm 
@@ -48,7 +45,7 @@ public class P026_ReciprocalCycles {
 		}
 	}
 	
-	private boolean recurringNumerator(Integer numerator, List<Integer> numerators){
+	private boolean checkIfNumeratorWasAlreadyUsed(Integer numerator, List<Integer> numerators){
 		if (numerators.contains(numerator)){
 			return true;
 		} 
@@ -72,14 +69,12 @@ public class P026_ReciprocalCycles {
 		List<Integer> remainders = new ArrayList<Integer>();
 			
 		while (!isRepeatingNumerator){
-			if (recurringNumerator(numerator, numerators)){
+			if (checkIfNumeratorWasAlreadyUsed(numerator, numerators)){
 				isRepeatingNumerator = true;
-				if (longDivisionDecimals.size() > currentRecurringCycle.getLength()){
-					currentRecurringCycle.setDenominator(originalDenominator);
-					currentRecurringCycle.setLength(remainders.size()-1-remainders.indexOf(remainder));
-					currentRecurringCycle.setBeginPosition(remainders.indexOf(remainder));
-					currentRecurringCycle.setEndPosition(remainders.size()-2);
-					currentRecurringCycle.setRepeatingDecimals(longDivisionDecimals);
+				if (longDivisionDecimals.size() > longestRecurringCycle.getLength()){
+					
+					updateLongestRecurringCycle(originalDenominator, remainder,
+							longDivisionDecimals, remainders);
 				}
 			}
 			else {
@@ -91,6 +86,16 @@ public class P026_ReciprocalCycles {
 					numerator = remainder * 10;
 				}
 			}
+	}
+
+	private void updateLongestRecurringCycle(Integer originalDenominator,
+			Integer remainder, List<Integer> longDivisionDecimals,
+			List<Integer> remainders) {
+		longestRecurringCycle.setDenominator(originalDenominator);
+		longestRecurringCycle.setLength(remainders.size()-1-remainders.indexOf(remainder));
+		longestRecurringCycle.setBeginPosition(remainders.indexOf(remainder));
+		longestRecurringCycle.setEndPosition(remainders.size()-2);
+		longestRecurringCycle.setRepeatingDecimals(longDivisionDecimals);
 	}
 
 	
@@ -110,7 +115,7 @@ public class P026_ReciprocalCycles {
 		for (Integer i : repeatingDecimals){
 			p026.longDivision(1, i);
 		}
-		System.out.println(p026.currentRecurringCycle.toString());
+		System.out.println(p026.longestRecurringCycle.toString());
 	}
 }
        

@@ -1,7 +1,9 @@
 package nl.hkolvoort.euler;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Harm
@@ -26,26 +28,59 @@ import java.util.List;
 public class P026_ReciprocalCycles {
 	
 	private RecurringCycle longestRecurringCycle;
+	
+	private boolean isNotRepeatingNumerator;
+	private Integer originalDenominator;
+	private Integer numerator;
+	private Integer remainder;
+	private Integer division;
+	private List<Integer> longDivisionDecimals;
+	private List<Integer> numerators;
+	private List<Integer> remainders;
 
 	public P026_ReciprocalCycles(){
 		longestRecurringCycle = new RecurringCycle();
 	}
 	
 	public static boolean fractionIsRecurringDecimal(Integer denominator){
-		/* TODO 
-		 This works up till 1000. Needs upgrade to more generic algorithm 
+		/*  
 		 If the prime factorization of the denominator of a fraction has only factors of 2 and factors of 5, 
 		 the decimal expression terminates.  If there is any prime factor in the denominator other than 2 or 5, 
-		 then the decimal expression repeats.  */
-		if ((10 % denominator == 0) || (100 % denominator == 0) || (1000 % denominator == 0)){
-			return false;
+		 then the decimal expression is recurring.  
+		 */
+		
+		Set<Integer> primeFactorSet = new HashSet<Integer>(EulerHelper.primeFactors(denominator));
+		return !(primeFactorSet.size() == 2 && primeFactorSet.contains(2) && primeFactorSet.contains(5));
 		}
-		else{
-			return true;
-		}
+	
+	public void longDivision(Integer denominator){
+		initializeLongDivisonFields(denominator);
+			
+		while (noRepeatingNumeratorFound()){
+			if (numeratorWasAlreadyUsed(numerator)){
+				repeatingNumeratorFound();
+				if (recurringCycleLengthIsGreaterThanCurrentMaximumLength()){
+					updateLongestRecurringCycle();
+				}
+			}
+			else {
+					doNextDivision(numerator, denominator);
+					addNumeratorToListOfNumerators(numerator);
+					addRemainderToListOfRemainders(remainder);
+					addDivisionToListOfDecimals(division);
+					determineNextNumerator(remainder);
+				}
+			}
 	}
 	
-	private boolean checkIfNumeratorWasAlreadyUsed(Integer numerator, List<Integer> numerators){
+	private boolean noRepeatingNumeratorFound(){
+		return isNotRepeatingNumerator;
+	}
+
+	private void repeatingNumeratorFound(){
+		isNotRepeatingNumerator = false;
+	}
+	private boolean numeratorWasAlreadyUsed(Integer numerator){
 		if (numerators.contains(numerator)){
 			return true;
 		} 
@@ -54,48 +89,48 @@ public class P026_ReciprocalCycles {
 		}
 	}
 	
-	private static RecurringCycle determineRecurringCycle(Integer denominator){
-		// TODO create LongDivision algorithm
-		return new RecurringCycle();
+	private boolean recurringCycleLengthIsGreaterThanCurrentMaximumLength(){
+		return longDivisionDecimals.size() > longestRecurringCycle.getLength();
 	}
 	
-	public void longDivision(Integer numerator, Integer denominator){
-		boolean isRepeatingNumerator = false;
-		Integer originalDenominator = denominator;
-		Integer remainder = 0;
-		Integer division = 0;
-		List<Integer> longDivisionDecimals = new ArrayList<Integer>();
-		List<Integer> numerators = new ArrayList<Integer>();
-		List<Integer> remainders = new ArrayList<Integer>();
-			
-		while (!isRepeatingNumerator){
-			if (checkIfNumeratorWasAlreadyUsed(numerator, numerators)){
-				isRepeatingNumerator = true;
-				if (longDivisionDecimals.size() > longestRecurringCycle.getLength()){
-					
-					updateLongestRecurringCycle(originalDenominator, remainder,
-							longDivisionDecimals, remainders);
-				}
-			}
-			else {
-					division = numerator / denominator;
-					remainder = numerator % denominator;
-					numerators.add(numerator);
-					remainders.add(remainder);
-					longDivisionDecimals.add(division);
-					numerator = remainder * 10;
-				}
-			}
+	private void initializeLongDivisonFields(Integer denominator){
+		isNotRepeatingNumerator = true;
+		originalDenominator = denominator;
+		numerator = 1;
+		remainder = 0;
+		division = 0;
+		longDivisionDecimals = new ArrayList<Integer>();
+		numerators = new ArrayList<Integer>();
+		remainders = new ArrayList<Integer>();
 	}
 
-	private void updateLongestRecurringCycle(Integer originalDenominator,
-			Integer remainder, List<Integer> longDivisionDecimals,
-			List<Integer> remainders) {
+	private void updateLongestRecurringCycle() {
 		longestRecurringCycle.setDenominator(originalDenominator);
 		longestRecurringCycle.setLength(remainders.size()-1-remainders.indexOf(remainder));
 		longestRecurringCycle.setBeginPosition(remainders.indexOf(remainder));
 		longestRecurringCycle.setEndPosition(remainders.size()-2);
 		longestRecurringCycle.setRepeatingDecimals(longDivisionDecimals);
+	}
+	
+	private void doNextDivision(Integer numerator, Integer denominator){
+		division = numerator / denominator;
+		remainder = numerator % denominator;
+	} 
+	
+	private void addNumeratorToListOfNumerators(Integer numerator){
+		numerators.add(numerator);
+	}
+	
+	private void addRemainderToListOfRemainders(Integer remainder){
+		remainders.add(remainder);
+	}
+	
+	private void addDivisionToListOfDecimals(Integer division){
+		longDivisionDecimals.add(division);
+	}
+	
+	private void determineNextNumerator(Integer remainder){
+		numerator = remainder * 10;
 	}
 
 	
@@ -113,8 +148,9 @@ public class P026_ReciprocalCycles {
 		
 		P026_ReciprocalCycles p026 = new P026_ReciprocalCycles();
 		for (Integer i : repeatingDecimals){
-			p026.longDivision(1, i);
+			p026.longDivision(i);
 		}
+		
 		System.out.println(p026.longestRecurringCycle.toString());
 	}
 }

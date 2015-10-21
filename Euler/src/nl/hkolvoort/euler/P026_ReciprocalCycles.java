@@ -151,7 +151,7 @@ public class P026_ReciprocalCycles {
 			p026.longDivision(i);
 		}
 		
-		System.out.println("hello" + p026.longestRecurringCycle.toString());
+		System.out.println(p026.longestRecurringCycle.toString());
 	}
 }
        

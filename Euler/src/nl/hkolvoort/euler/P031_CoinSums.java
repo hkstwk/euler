@@ -3,7 +3,7 @@ package nl.hkolvoort.euler;
 public class P031_CoinSums {
 
 	public static void main(String[] args) {
-		Integer value = 200;
+		Integer value = 10;
 		Integer count = 0;
 		
 		for (int a = value; a>=0; a -=200) {
